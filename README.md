@@ -30,6 +30,9 @@ Tools needed:
 
 # install gspread, oauth2client, keyring:
 >$ pip install gspread oauth2client keyring
+
+# create google drive api key
+follow these [directions](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 ```
 
 ### Using system keyring
