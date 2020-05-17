@@ -31,6 +31,7 @@ Tools needed:
 # install gspread, oauth2client, keyring:
 >$ pip install gspread oauth2client keyring
 ```
+
 To create the google drive api key:
 follow these [directions](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 
@@ -43,6 +44,7 @@ To avoid hard-coding MFP credentials and its security implications, use python's
 >>> keyring.set_password('myfitnesspal', 'YOUR_USERNAME_HERE', 'YOUR_PASSWORD_HERE')
 # verify that you've stored your password correctly
 >>> keyring.get_password('myfitnesspal', 'YOUR_USERNAME_HERE')
+>>> exit()
 ```
 
 ## Acknowledgments
