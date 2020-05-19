@@ -22,7 +22,7 @@ sheet.batch_update([{
     'values': [['800', '0/2']],
 }, {
     #update mfp cals, protein, carbs, fat
-    'range': 'E40:H40',
-    'values': [['a', 'b', 'c', 'd']],
+    'range': 'E40:I40',
+    'values': [['a', 'b', 'c', 'd', 'e']],
 }])
 
