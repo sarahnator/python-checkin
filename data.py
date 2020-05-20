@@ -4,6 +4,32 @@ from datetime import date
 import json
 from collections import OrderedDict
 
+
+# TODO create functions to extract m/d/y
+def get_year(y):
+    return y[:4]
+
+
+def get_month(m):
+    m = str(m)[5:]
+    if m[0] == '0':
+        m = m[1]
+    else:
+        m = m[0:2]
+    #print(m)
+    return m
+
+def get_day(d):
+    d = str(d)[5:]
+    x = d.find('-')
+    d = str(d)[x + 1:]
+    if d[0] == '0':
+        d = d[1]
+    else:
+        d = d[0:2]
+    # print(d)
+    return d
+
 if __name__ == "__main__":
     print("hello")
 
@@ -59,22 +85,41 @@ weights = list(weights.items())
 # container for data row
 data_list_list = []
 
-for (x,y) in weights:
+for (a, b) in weights:
     # TODO query nutrition data
-    weight_date = str(x)[5:]
-    weight_w = str(y)
+    date = str(a)
+    y = get_year(date)
+    m = get_month(date)
+    d = get_day(date)
+
+    # get totals
+    day = client.get_date(int(y),int(m), int(d))
+    total = day.totals
+
+    # int day totals
+    cal, pro, car, fat, fiber = 0, 0, 0, 0, 0
+
+    # check if data exists
+    if total:
+        cal = total['calories']
+        pro = total['protein']
+        car = total['carbohydrates']
+        fat = total['fat']
+        fiber = total['fiber']
+    # check values
+    print("cal: " + str(cal) + " pro: " + str(pro) + " car: " + str(car) + " fat: " + str(fat) + " fiber " + str(fiber))
+
+    # eat up year
+    weight_date = date[5:]
+    weight = str(b)
     # prints most recent --> least recent
-    print((x,y))
-    print("date: " + weight_date + " weight: "  + weight_w)
-    #data_list_list.append(tuple(weight_w, weight_date))
-    #data_list_list.extend(tuple())
+    print((a, b))
+    print("date: " + weight_date + " weight: " + weight)
+    data_row = [weight, weight_date, cal, pro, car, fat, fiber]
+    print(data_row)
+    data_list_list.append(data_row)
 
-
-# TODO create functions to extract m/d/y
-# def get_year()
-# def get_month()
-# def get_day()
-
+print(data_list_list)
 
 # ####################################
 # # extract json information @sheetName
