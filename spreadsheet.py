@@ -26,22 +26,65 @@ def update_col(dict):
     # [62, 62, 63, 67]] --> fiber
     val_list = [list(col) for col in zip(*[d.values() for d in dict])]
     print("func: " + str(val_list))
-    update_weights(val_list, 0)
+    update_all(val_list, 0)
+
+def update_all(val_list, data_offset):
+    update_weights(val_list, data_offset)
+    update_cals(val_list, data_offset)
+    update_pro(val_list, data_offset)
+    update_carb(val_list,data_offset)
+    update_fat(val_list, data_offset)
+    update_fiber(val_list,data_offset)
 
 # TODO variable number of args?
-def update_weights(val_list, num):
+def update_weights(val_list, data_offset):
     # weight cells: B40:B46
-    # num = day of week data starts
-    rng = str('B' + str(40 + num) + ':B' + str(40 + len(val_list[0]) - 1))
-    print(rng)
-    cell_range = sheet.range(rng)
-    for i, cell in enumerate(cell_range):
-        cell.value = val_list[0][i]
-        print("cell val: " + str(cell.value))
-    sheet.update_cells(cell_range)
+    # data_offset = day of week data starts (sunday = 0, mo = 1...)
+    rng = str('B' + str(40 + data_offset) + ':B' + str(40 + len(val_list[0]) - 1))
+    populate_cells(sheet.range(rng), val_list[0])
 
-def update_dates(val_list, num):
-    pass
+# Todo: only need sunday's date. Also in correct format 5/12/2020
+def update_dates(val_list, data_offset):
+    # date cells: C40:C46
+    # data_offset = day of week data starts (sunday = 0, mo = 1...)
+    rng = str('C' + str(40 + data_offset) + ':C' + str(40 + len(val_list[0]) - 1))
+    populate_cells(sheet.range(rng), val_list[1])
+
+def update_cals(val_list, data_offset):
+    # date cells: E40:E46
+    # data_offset = day of week data starts (sunday = 0, mo = 1...)
+    rng = str('E' + str(40 + data_offset) + ':E' + str(40 + len(val_list[0]) - 1))
+    populate_cells(sheet.range(rng), val_list[2])
+
+def update_pro(val_list, data_offset):
+    # date cells: E40:E46
+    # data_offset = day of week data starts (sunday = 0, mo = 1...)
+    rng = str('F' + str(40 + data_offset) + ':F' + str(40 + len(val_list[0]) - 1))
+    populate_cells(sheet.range(rng), val_list[3])
+
+
+def update_carb(val_list, data_offset):
+    # date cells: E40:E46
+    # data_offset = day of week data starts (sunday = 0, mo = 1...)
+    rng = str('G' + str(40 + data_offset) + ':G' + str(40 + len(val_list[0]) - 1))
+    populate_cells(sheet.range(rng), val_list[4])
+
+def update_fat(val_list, data_offset):
+    # date cells: E40:E46
+    # data_offset = day of week data starts (sunday = 0, mo = 1...)
+    rng = str('H' + str(40 + data_offset) + ':H' + str(40 + len(val_list[0]) - 1))
+    populate_cells(sheet.range(rng), val_list[4])
+
+def update_fiber(val_list, data_offset):
+    # date cells: E40:E46
+    # data_offset = day of week data starts (sunday = 0, mo = 1...)
+    rng = str('I' + str(40 + data_offset) + ':I' + str(40 + len(val_list[0]) - 1))
+    populate_cells(sheet.range(rng), val_list[5])
+
+def populate_cells(cell_range, val_sublist):
+    for i, cell in enumerate(cell_range):
+        cell.value = val_sublist[i]
+    sheet.update_cells(cell_range)
 
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds',
