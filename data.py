@@ -83,7 +83,7 @@ weights = client.get_measurements('Weight', day)
 # convert ordered dictionary to list
 weights = list(weights.items())
 # container for data row
-data_list_list = []
+data_list = []
 
 for (a, b) in weights:
     # TODO query nutrition data
@@ -115,11 +115,12 @@ for (a, b) in weights:
     # prints most recent --> least recent
     print((a, b))
     print("date: " + weight_date + " weight: " + weight)
-    data_row = [weight, weight_date, cal, pro, car, fat, fiber]
+    data_row = {"weight": weight, "date": weight_date, "cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
     print(data_row)
-    data_list_list.append(data_row)
+    data_list.append(data_row)
 
-print(data_list_list)
+print(data_list)
+
 
 
 
