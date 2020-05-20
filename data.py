@@ -3,7 +3,7 @@ import datetime
 from datetime import date
 import json
 from collections import OrderedDict
-from spreadsheet import update_row
+from spreadsheet import *
 
 # TODO create functions to extract m/d/y
 def get_year(y):
@@ -101,11 +101,16 @@ for (a, b) in weights:
 
     # check if data exists
     if total:
+        total.pop("sodium") # I am sodium queen DGAF
         cal = total['calories']
         pro = total['protein']
         car = total['carbohydrates']
         fat = total['fat']
         fiber = total['fiber']
+        desired_order = ["calories", "protein", "carbohydrates", "fat", "fiber"]
+        # reorder list: cal, pro, carb, fat, fiber
+        total = {t: total[t] for t in desired_order}
+        print(total)
     else:
         total = {"cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
     # check values
@@ -121,10 +126,11 @@ for (a, b) in weights:
     data_row = {"weight": weight, "date": weight_date}
     data_row.update(total)
     print(data_row)
-    data_list.insert(0,data_row)
+    # prepend
+    data_list.insert(0, data_row)
 
-print(data_list)
-#update_row(data_list)
+# print(data_list)
+update_col(data_list)
 
 
 
