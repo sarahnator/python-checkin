@@ -3,7 +3,7 @@ import datetime
 from datetime import date
 import json
 from collections import OrderedDict
-
+from spreadsheet import update_row
 
 # TODO create functions to extract m/d/y
 def get_year(y):
@@ -86,7 +86,7 @@ weights = list(weights.items())
 data_list = []
 
 for (a, b) in weights:
-    # TODO query nutrition data
+    # query nutrition data
     date = str(a)
     y = get_year(date)
     m = get_month(date)
@@ -106,6 +106,8 @@ for (a, b) in weights:
         car = total['carbohydrates']
         fat = total['fat']
         fiber = total['fiber']
+    else:
+        total = {"cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
     # check values
     print("cal: " + str(cal) + " pro: " + str(pro) + " car: " + str(car) + " fat: " + str(fat) + " fiber " + str(fiber))
 
@@ -115,12 +117,14 @@ for (a, b) in weights:
     # prints most recent --> least recent
     print((a, b))
     print("date: " + weight_date + " weight: " + weight)
-    data_row = {"weight": weight, "date": weight_date, "cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
+    # data_row = {"weight": weight, "date": weight_date, "cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
+    data_row = {"weight": weight, "date": weight_date}
+    data_row.update(total)
     print(data_row)
-    data_list.append(data_row)
+    data_list.insert(0,data_row)
 
 print(data_list)
-
+#update_row(data_list)
 
 
 
