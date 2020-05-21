@@ -35,6 +35,7 @@ def update_weights(val_list):
 
 def update_date():
     sunday = get_sunday()
+    sunday ='{:%m/%d/%y}'.format(sunday)
     sheet.update_acell('C40', sunday)
 
 def update_cals(val_list):
