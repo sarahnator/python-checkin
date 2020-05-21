@@ -4,6 +4,7 @@ Python program that automates data retrieval from MyFitnessPal and updates a goo
 ## TODO
  * update this readme
  * integrate fitbit api
+ * DRY code
  * CLI
  * PyPi package
 
