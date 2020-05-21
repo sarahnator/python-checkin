@@ -1,6 +1,8 @@
 # Ignore vscode settings
 /.vscode
 
+# old
+READMEold.md
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

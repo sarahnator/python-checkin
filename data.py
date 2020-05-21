@@ -81,7 +81,7 @@ def run():
             desired_order = ["calories", "protein", "carbohydrates", "fat", "fiber"]
             # reorder list: cal, pro, carb, fat, fiber
             total = {t: total[t] for t in desired_order}
-            #print(total)
+            print(total)
         else:
             total = {"cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
         # check values

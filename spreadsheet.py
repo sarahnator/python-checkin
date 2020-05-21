@@ -60,13 +60,13 @@ def update_fat(val_list):
     # date cells: E40:E46
     # data_offset = day of week data starts (sunday = 0, mo = 1...)
     rng = str('H40:H' + str(40 + len(val_list[0]) - 1))
-    populate_cells(sheet.range(rng), val_list[4])
+    populate_cells(sheet.range(rng), val_list[5])
 
 def update_fiber(val_list):
     # date cells: E40:E46
     # data_offset = day of week data starts (sunday = 0, mo = 1...)
     rng = str('I40:I' + str(40 + len(val_list[0]) - 1))
-    populate_cells(sheet.range(rng), val_list[5])
+    populate_cells(sheet.range(rng), val_list[6])
 
 def populate_cells(cell_range, val_sublist):
     for i, cell in enumerate(cell_range):
