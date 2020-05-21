@@ -6,7 +6,6 @@ from collections import OrderedDict
 from spreadsheet import *
 from dateUtils import *
 import click
-#from dateutil.parser import parse
 
 
 def run():
@@ -17,26 +16,17 @@ def run():
 
     # query weights
     last_sunday = get_sunday()
-    y = last_sunday.year
-    m = last_sunday.month
-    d = last_sunday.day
-    # day = parse(last_sunday, dayfirst=False)
-
+    y, m, d = last_sunday.year, last_sunday.month, last_sunday.day
     day = datetime.date(y, m, d)
     weights = client.get_measurements('Weight', day)
-    # convert ordered dictionary to list
-    weights = list(weights.items())
-    # container for data row
-    data_list = []
+    weights = list(weights.items())  # convert ordered dictionary to list
 
+    data_list = []  # container for data row
 
     for (a, b) in weights:
         # query nutrition data
-        # date = str(a)
         date = a
-        y = date.year
-        m = date.month
-        d = date.day
+        y, m, d = date.year, date.month, date.day
 
         # get totals
         day = client.get_date(y, m, d)
@@ -49,23 +39,18 @@ def run():
         if total:
             total.pop("sodium")  # I am sodium queen DGAF - remove stat from dict
             desired_order = ["calories", "protein", "carbohydrates", "fat", "fiber"]
-            # reorder list: {cal, pro, carb, fat, fiber}
-            total = {t: total[t] for t in desired_order}
+            total = {t: total[t] for t in desired_order}  # reorder list: {cal, pro, carb, fat, fiber}
         else:
             total = {"cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
-        # check values
 
         weight = str(b)
         # prints most recent --> least recent
-        # print((a, b))
-        # print("date: " + str(date) + " weight: " + weight)
         data_row = {"weight": weight, "date": date}
         data_row.update(total)
-        # prepend
-        data_list.insert(0, data_row)
+        data_list.insert(0, data_row)  # prepend to front
 
-    print(data_list)
-    update_col(data_list)
+    # print(data_list)
+    update_cols(data_list)
 
 
 if __name__ == "__main__":
