@@ -54,7 +54,9 @@ def run():
 
 
 
-
+    #make config helper class to set note flag
+    #create notes func in spreadsheet
+    #test test test
     @click.group()
 
     # prompt = '<day of week> <note>',
