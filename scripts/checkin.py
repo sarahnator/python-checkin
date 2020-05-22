@@ -52,14 +52,25 @@ def run():
     # print(data_list)
     update_cols(data_list)
 
+
+
+
+    @click.group()
+
+    # prompt = '<day of week> <note>',
+    @click.option('--note', is_flag=True,
+                  help='''This script edits the athlete notes table.''')
+    def cli(note, day_of_week, notes, config):
+        click.echo('Coming soon: entering %s into athlete notes table' % note)
+
+    @click.argument('day_of_week', type=str)
+    @click.argument('notes', type=str)
     @click.command()
-    @click.option('--note', prompt='<day of week> <note>',
-                  help='''Edit the athlete notes table. Specify a day of the week and write your message. 
-                  Example: monday i ate ice cream and obtained superpowers''')
     def main():
         print("Hello! Updating your spreadsheet...")
         run()
+        if config.note:
+            pass #run edit notes command
 
     if __name__ == "__main__":
         main()
-
