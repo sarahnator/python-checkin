@@ -1,16 +1,14 @@
 import myfitnesspal as pal
 import datetime
-from datetime import date
 import json
-from collections import OrderedDict
 from spreadsheet import *
 from dateUtils import *
-import click
+# import click
 
 
 def run():
     # init connection to mfp api
-    with open('../../json/creds.json') as src:
+    with open('../json/creds.json') as src:
         data = json.load(src)
     client = pal.Client(data['email'])
 
@@ -52,27 +50,37 @@ def run():
     # print(data_list)
     update_cols(data_list)
 
+    # make config helper class to set note flag
+    # create notes func in spreadsheet
+    # test test test
 
+    # class Config(object):
+    #     def __init__(self):
+    #         self.note = False
+    #
+    # pass_config = click.make_pass_decorator(Config, ensure=True)  # ensure=True: first usage, object will be created
+    #
+    # @click.group()
+    # @click.option('--note', is_flag=True,
+    #               help='''This script edits the athlete notes table.''')
+    # @pass_config
+    # def cli(note, day_of_week, notes, config):
+    #     click.echo('Coming soon: entering %s into athlete notes table' % note)
+    #     config.note = note
+    #
+    # @click.argument('day_of_week', type=str)
+    # @click.argument('notes', type=str)
+    # @click.command()
+    # @pass_config
+    # #pass in param config
 
-    #make config helper class to set note flag
-    #create notes func in spreadsheet
-    #test test test
-    @click.group()
+    # def main():
+    #     print("Hello! Updating your spreadsheet...")
+    #     run()
+    #     # if config.note:
+    #     #     click.echo('we are in note mode')
+    #     #     # run edit notes command
 
-    # prompt = '<day of week> <note>',
-    @click.option('--note', is_flag=True,
-                  help='''This script edits the athlete notes table.''')
-    def cli(note, day_of_week, notes, config):
-        click.echo('Coming soon: entering %s into athlete notes table' % note)
-
-    @click.argument('day_of_week', type=str)
-    @click.argument('notes', type=str)
-    @click.command()
-    def main():
-        print("Hello! Updating your spreadsheet...")
-        run()
-        if config.note:
-            pass #run edit notes command
-
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    print("Hello! Updating your spreadsheet...")
+    run()

@@ -3,6 +3,12 @@
 
 # old
 READMEold.md
+client.json
+creds.json
+
+#
+../json/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

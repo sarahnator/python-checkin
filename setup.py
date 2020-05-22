@@ -22,6 +22,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        checkin=scripts.checkin:main
+        checkin=main/scripts.checkin:main
     ''',
 )
