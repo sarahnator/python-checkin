@@ -10,7 +10,7 @@ import click
 
 def run():
     # init connection to mfp api
-    with open('../json/creds.json') as src:
+    with open('../../json/creds.json') as src:
         data = json.load(src)
     client = pal.Client(data['email'])
 
@@ -46,13 +46,20 @@ def run():
         weight = str(b)
         # prints most recent --> least recent
         data_row = {"weight": weight, "date": date}
-        data_row.update(total)
-        data_list.insert(0, data_row)  # prepend to front
+        data_row.update(total)  # append totals
+        data_list.insert(0, data_row)  # prepend to front of list of all data
 
     # print(data_list)
     update_cols(data_list)
 
+    @click.command()
+    @click.option('--note', prompt='<day of week> <note>',
+                  help='''Edit the athlete notes table. Specify a day of the week and write your message. 
+                  Example: monday i ate ice cream and obtained superpowers''')
+    def main():
+        print("Hello! Updating your spreadsheet...")
+        run()
 
-if __name__ == "__main__":
-    print("Hello! Updating your spreadsheet...")
-    run()
+    if __name__ == "__main__":
+        main()
+

@@ -50,11 +50,11 @@ def populate_cells(cell_range, val_sublist):
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('../json/client_secret.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('../../json/client_secret.json', scope)
 client = gspread.authorize(creds)
 
 # extract json information @sheetName
-with open('../json/creds.json') as src:
+with open('../../json/creds.json') as src:
     data = json.load(src)
 
 # Find workbook by name and open the first sheet
