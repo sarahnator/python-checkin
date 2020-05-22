@@ -3,7 +3,7 @@ import datetime
 import json
 from spreadsheet import *
 from dateUtils import *
-# import click
+import click
 
 
 def run():
@@ -54,33 +54,38 @@ def run():
     # create notes func in spreadsheet
     # test test test
 
-    # class Config(object):
-    #     def __init__(self):
-    #         self.note = False
-    #
-    # pass_config = click.make_pass_decorator(Config, ensure=True)  # ensure=True: first usage, object will be created
-    #
-    # @click.group()
-    # @click.option('--note', is_flag=True,
-    #               help='''This script edits the athlete notes table.''')
-    # @pass_config
-    # def cli(note, day_of_week, notes, config):
-    #     click.echo('Coming soon: entering %s into athlete notes table' % note)
-    #     config.note = note
-    #
-    # @click.argument('day_of_week', type=str)
-    # @click.argument('notes', type=str)
-    # @click.command()
-    # @pass_config
-    # #pass in param config
 
-    # def main():
-    #     print("Hello! Updating your spreadsheet...")
-    #     run()
-    #     # if config.note:
-    #     #     click.echo('we are in note mode')
-    #     #     # run edit notes command
+class Config(object):
+    def __init__(self):
+        self.note = False
 
-if __name__ == "__main__":
+
+pass_config = click.make_pass_decorator(Config, ensure=True)  # ensure=True: first usage, object will be created
+
+
+@click.group()
+@click.option('--note', is_flag=True,
+              help='''This script edits the athlete notes table.''')
+@pass_config
+def cli(note, day_of_week, notes, config):
+    click.echo('Coming soon: entering %s into athlete notes table' % note)
+    config.note = note
+
+
+@click.argument('day_of_week', type=str)
+@click.argument('notes', type=str)
+@click.command()
+@pass_config
+# config argument main(config)
+def main(config):
     print("Hello! Updating your spreadsheet...")
     run()
+    # if config.note:
+    #     click.echo('we are in note mode')
+    #     # run edit notes command
+
+
+if __name__ == "__main__":
+    main()
+    # print("Hello! Updating your spreadsheet...")
+    # run()
