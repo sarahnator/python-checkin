@@ -10,10 +10,16 @@ def update_cols(dict):
     #           [298, 301, 298, 295], --> pro   [63, 65, 63, 63], --> fat   [154, 153, 154, 152], --> pro   [62, 62, 63, 67]] --> fiber
     val_list = [list(col) for col in zip(*[d.values() for d in dict])]
     update_date()
-    update_all(val_list)
+    clear_notes()
+    update_tracker(val_list)
 
 
-def update_all(val_list):
+def clear_notes():
+    rng = 'A20:G33'
+    populate_cells(sheet.range(rng), '')
+
+
+def update_tracker(val_list):
     # update weight first
     rng = 'B40:B46'
     value_idx = 0
@@ -34,8 +40,8 @@ def update_date():
 
 def populate_cells(cell_range, val_sublist):
     for i, cell in enumerate(cell_range):
-        if i > len(val_sublist) - 1:
-            cell.value = ''  # have no data yet for these cells
+        if (i > len(val_sublist) - 1) or val_sublist == '':
+            cell.value = ''  # have no data for these cells
         else:
             cell.value = val_sublist[i]
     sheet.update_cells(cell_range)
