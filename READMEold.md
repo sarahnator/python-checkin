@@ -72,3 +72,9 @@ To avoid hard-coding MFP credentials and its security implications, use python's
 # }])
  # day = parse(last_sunday, dayfirst=False)
 # from dateutil.parser import parse
+
+#script testing:
+$ virtualenv venv
+$ . venv/bin/activate
+$ pip install --editable .
+[src](https://click.palletsprojects.com/en/7.x/setuptools/#testing-the-script)

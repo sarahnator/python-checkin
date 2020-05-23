@@ -1,13 +1,6 @@
 import myfitnesspal as pal
-import datetime
-import json
-<<<<<<< HEAD
 from scripts.spreadsheet import *
 from scripts.dateUtils import *
-=======
-from spreadsheet import *
-from dateUtils import *
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
 import click
 
 
@@ -15,11 +8,7 @@ import click
 
 def run():
     # init connection to mfp api
-<<<<<<< HEAD
     with open('json/creds.json') as src:
-=======
-    with open('../json/creds.json') as src:
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
         data = json.load(src)
     client = pal.Client(data['email'])
 
@@ -71,38 +60,21 @@ def run():
 # -m: call multiple times??
 # multiple: enable mult calls
 # confine first param to be day of week
-<<<<<<< HEAD
 @click.option('--note', '-n', multiple=True,
               type=(click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False), str),
-=======
-@click.option('--note', '-m', multiple=True,
-              type=(click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']), str),
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
               default='', help='''This script edits the athlete notes table. Takes two parameters:
                 @Param 3-letter abbreviation of weekday
                 @Param message''')
 def cli(clear, note):
     print("Hello! Updating your spreadsheet...")
-<<<<<<< HEAD
-=======
-    run()
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
     if note:
         click.echo('we are in note mode')
         # run edit notes command
     if clear:
         click.echo('we are in clear mode')
-<<<<<<< HEAD
     run()
 
-=======
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
 
 
 if __name__ == "__main__":
     cli()
-<<<<<<< HEAD
-=======
-
-print("hello!!!")
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427

@@ -1,11 +1,7 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import json
-<<<<<<< HEAD
 from scripts.dateUtils import get_sunday
-=======
-from main.scripts.dateUtils import get_sunday
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
 
 
 def update_cols(dict):
@@ -53,19 +49,11 @@ def populate_cells(cell_range, val_sublist):
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
-<<<<<<< HEAD
 creds = ServiceAccountCredentials.from_json_keyfile_name('json/client.json', scope)
 client = gspread.authorize(creds)
 
 # extract json information @sheetName
 with open('json/creds.json') as src:
-=======
-creds = ServiceAccountCredentials.from_json_keyfile_name('../json/client.json', scope)
-client = gspread.authorize(creds)
-
-# extract json information @sheetName
-with open('../json/creds.json') as src:
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
     data = json.load(src)
 
 # Find workbook by name and open the first sheet
