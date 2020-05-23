@@ -7,10 +7,10 @@ setup(
     description='Program to facilitate analysis of myfitnesspal data in google spreadsheets',
     author='Sarah Etter',
     author_email='sarahett@usc.edu',
-    py_modules=['main'],
+    py_modules=['checkin'],
     classifiers=[
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
+        'License :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Utilities',
@@ -22,6 +22,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        checkin=main/scripts.checkin:main
+        checkin=main/scripts.checkin:cli
     ''',
 )

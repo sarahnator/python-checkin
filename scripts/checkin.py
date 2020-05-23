@@ -5,6 +5,7 @@ from spreadsheet import *
 from dateUtils import *
 import click
 
+#!/usr/bin/env python
 
 def run():
     # init connection to mfp api
@@ -55,45 +56,62 @@ def run():
     # test test test
 
 
-class Config(object):
-    def __init__(self):
-        self.note = False
-        self.clear = False
+# class Config(object):
+#     def __init__(self):
+#         self.note = False
+#         self.clear = False
+#
+#
+# # decorator that passes config object to each command decorated with this decorator
+# pass_config = click.make_pass_decorator(Config, ensure=True)  # ensure=True: first usage, object will be created
 
-# decorator that passes config object to each command decorated with this decorator
-pass_config = click.make_pass_decorator(Config, ensure=True)  # ensure=True: first usage, object will be created
 
-
-@click.group()
-@click.option('--clear', is_flag=True,
+@click.command()
+@click.option('--clear', '-c', is_flag=True,
               help='''This script clears:
                - Weekly weight and nutrition tracker
                - Athlete daily notes
                - Weekly activity tracker''')
-# -m: call multiple times
+# -m: call multiple times??
+# multiple: enable mult calls
 # confine first param to be day of week
-@click.option('--note', '-m', type=(click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']), str),
-                help='''This script edits the athlete notes table.
+@click.option('--note', '-m', multiple=True,
+              type=(click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']), str),
+              default='', help='''This script edits the athlete notes table.
                 @Param 3-letter abbreviation of weekday
                 @Param message''')
-@pass_config
-def cli(note):
-    click.echo('Coming soon: entering %s into athlete notes table' % note)
 
-@pass_config
-def cli(clear):
+# @pass_config
+def cli(config, clear, note):
+    config.clear = clear
     click.echo('Entering clear mode')
-
-@cli.command()
-@pass_config
-# config argument main(config)
-def checkin():
     print("Hello! Updating your spreadsheet...")
     run()
-    # if config.note:
-    #     click.echo('we are in note mode')
-    #     # run edit notes command
+    if config.note:
+        click.echo('we are in note mode')
+        # run edit notes command
+    if config.clear:
+        click.echo('we are in clear mode')
 
+
+
+# @pass_config
+# def cli(config, note):
+#     config.note = note
+#     click.echo('Coming soon: entering %s into athlete notes table' % note)
+
+
+# @click.command()
+# @pass_config
+# # config argument main(config)
+# def checkin(config):
+#     print("Hello! Updating your spreadsheet...")
+#     run()
+#     if config.note:
+#         click.echo('we are in note mode')
+#         # run edit notes command
+#     if config.clear:
+#         click.echo('we are in clear mode')
 
 # if __name__ == "__main__":
 #     main()
