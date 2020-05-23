@@ -25,3 +25,4 @@ setup(
         checkin=scripts.checkin:cli
     ''',
 )
+
