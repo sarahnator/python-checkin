@@ -77,20 +77,20 @@ def run():
 # confine first param to be day of week
 @click.option('--note', '-m', multiple=True,
               type=(click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']), str),
-              default='', help='''This script edits the athlete notes table.
+              default='', help='''This script edits the athlete notes table. Takes two parameters:
                 @Param 3-letter abbreviation of weekday
                 @Param message''')
 
 # @pass_config
-def cli(config, clear, note):
+def cli(clear, note):
     config.clear = clear
     click.echo('Entering clear mode')
     print("Hello! Updating your spreadsheet...")
     run()
-    if config.note:
+    if note:
         click.echo('we are in note mode')
         # run edit notes command
-    if config.clear:
+    if clear:
         click.echo('we are in clear mode')
 
 
