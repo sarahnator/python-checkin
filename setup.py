@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+#!/usr/bin/env python
 
 setup(
     name='main',
@@ -7,7 +8,6 @@ setup(
     description='Program to facilitate analysis of myfitnesspal data in google spreadsheets',
     author='Sarah Etter',
     author_email='sarahett@usc.edu',
-    py_modules=['checkin'],
     classifiers=[
         'Intended Audience :: Developers',
         'License :: MIT License',
@@ -22,6 +22,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        checkin=main/scripts.checkin:cli
+        checkin=main.scripts.checkin:cli
     ''',
 )
