@@ -58,26 +58,36 @@ def run():
 class Config(object):
     def __init__(self):
         self.note = False
+        self.clear = False
 
-
+# decorator that passes config object to each command decorated with this decorator
 pass_config = click.make_pass_decorator(Config, ensure=True)  # ensure=True: first usage, object will be created
 
 
 @click.group()
-@click.option('--note', is_flag=True,
-              help='''This script edits the athlete notes table.''')
+@click.option('--clear', is_flag=True,
+              help='''This script clears:
+               - Weekly weight and nutrition tracker
+               - Athlete daily notes
+               - Weekly activity tracker''')
+# -m: call multiple times
+# confine first param to be day of week
+@click.option('--note', '-m', type=(click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']), str),
+                help='''This script edits the athlete notes table.
+                @Param 3-letter abbreviation of weekday
+                @Param message''')
 @pass_config
-def cli(note, day_of_week, notes, config):
+def cli(note):
     click.echo('Coming soon: entering %s into athlete notes table' % note)
-    config.note = note
 
+@pass_config
+def cli(clear):
+    click.echo('Entering clear mode')
 
-@click.argument('day_of_week', type=str)
-@click.argument('notes', type=str)
-@click.command()
+@cli.command()
 @pass_config
 # config argument main(config)
-def main(config):
+def checkin():
     print("Hello! Updating your spreadsheet...")
     run()
     # if config.note:
@@ -85,7 +95,7 @@ def main(config):
     #     # run edit notes command
 
 
-if __name__ == "__main__":
-    main()
-    # print("Hello! Updating your spreadsheet...")
-    # run()
+# if __name__ == "__main__":
+#     main()
+#     # print("Hello! Updating your spreadsheet...")
+#     # run()
