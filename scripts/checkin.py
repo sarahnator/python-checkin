@@ -53,27 +53,24 @@ def run():
 
 @click.command()
 @click.option('--clear', '-c', is_flag=True,
-              help='''This script clears:
-               - Weekly weight and nutrition tracker
-               - Athlete daily notes
-               - Weekly activity tracker''')
-# -m: call multiple times??
-# multiple: enable mult calls
-# confine first param to be day of week
-@click.option('--note', '-n', multiple=True,
-              type=(click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False), str),
-              default='', help='''This script edits the athlete notes table. Takes two parameters:
-                @Param 3-letter abbreviation of weekday
-                @Param message''')
+              help='''This script clears entries in: Weekly weight and nutrition tracker, Athlete daily notes, and Weekly activity tracker''')
+@click.option('--note', '-n', is_flag=True, help='''This script edits the athlete notes table of the day of the week specified with -d or --day, and adds your text to that day's entry''')
 def cli(clear, note):
-    print("Hello! Updating your spreadsheet...")
+    print("\nHello! Updating your spreadsheet...\n")
     if note:
-        click.echo('we are in note mode')
+        day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True, type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
+        msg = click.prompt(text='Enter the note you would like to add for %s' % day)
+        print()
+        click.secho(' Adding note >> ', nl=False, reverse=True)
+        click.secho('%s ' % msg, reverse=True, bold=True, nl=False)
+        click.secho('<< to ', nl=False, reverse=True)
+        click.secho('%s ' % day, reverse=True, bold=True,)
+        print()
         # run edit notes command
     if clear:
         click.echo('we are in clear mode')
-    run()
 
+    run()
 
 
 if __name__ == "__main__":
