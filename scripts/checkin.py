@@ -52,11 +52,17 @@ def run():
 
 
 @click.command()
-@click.option('--update', '-u', is_flag=True, help='''This script updates entries in: Weekly weight and nutrition tracker and Weekly activity tracker''')
-@click.option('--clear', '-c', is_flag=True, help='''This script clears entries in: Weekly weight and nutrition tracker, Athlete daily notes, and Weekly activity tracker''')
+# @click.option('--update', '-u', is_flag=True, help='''This script updates entries in: Weekly weight and nutrition tracker and Weekly activity tracker''')
+@click.option('--clear', '-c', is_flag=True,
+help='''
+\b
+This script clears entries in: 
+> Weekly weight and nutrition tracker
+> Athlete daily notes
+> Weekly activity tracker''')
 @click.option('--note', '-n', is_flag=True, help='''This script edits the athlete notes table, adding text to the entry of a day of your choice''')
-def cli(clear, note, update):
-    print("\nHello! Updating your spreadsheet...\n")
+def cli(clear, note):
+    print("\nHello! Updating your spreadsheet...")
     if note:
         day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True, type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
         msg = click.prompt(text='Enter the note you would like to add for %s' % day)
@@ -67,17 +73,20 @@ def cli(clear, note, update):
         click.secho('<< to ', nl=False, reverse=True)
         click.secho('%s ' % day, reverse=True, bold=True,)
         print()
-
         # run edit notes command
-    if update:
-        run()
-        click.secho('\nUpdating food, weight, and step tracker entries', reverse=True)
+
+        if clear is None:
+            run()
+    # if update:
+    #     click.secho(' Updating food, weight, and step tracker entries... ', reverse=True)
+    #     run()
 
     elif clear:
-        click.secho('\nClearing your spreadsheet', reverse=True)
+        click.secho(' Clearing your spreadsheet ', reverse=True)
+    else:
+        run()
 
-
-
+    click.secho(' All entries updated! ', reverse=True)
 
 
 if __name__ == "__main__":
