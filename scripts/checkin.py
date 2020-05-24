@@ -52,37 +52,44 @@ def run():
 
 
 @click.command()
+@click.option('--tracker', '-t', is_flag=True,
+help='''This script enables you to edit the weekly weight and nutrition tracker''')
+@click.option('--activity', '-a', is_flag=True,
+help='''This script enables you to edit the weekly activity tracker''')
 # @click.option('--update', '-u', is_flag=True, help='''This script updates entries in: Weekly weight and nutrition tracker and Weekly activity tracker''')
 @click.option('--clear', '-c', is_flag=True,
-help='''
+              help='''
 \b
 This script clears entries in: 
-> Weekly weight and nutrition tracker
-> Athlete daily notes
-> Weekly activity tracker''')
-@click.option('--note', '-n', is_flag=True, help='''This script edits the athlete notes table, adding text to the entry of a day of your choice''')
-def cli(clear, note):
-    print("\nHello! Updating your spreadsheet...")
-    if note:
-        day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True, type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
+Any of the following specified with a flag
+> Weekly weight and nutrition tracker -t
+> Athlete daily notes -n
+> Weekly activity tracker -a''')
+
+@click.option('--note', '-n', is_flag=True,
+              help='''This script enables you to edit the athlete notes table''')
+def cli(clear, note, tracker, activity):
+    print("Hello! Updating your spreadsheet...")
+    if clear:
+        click.secho('Clearing your athlete notes ')
+        clear_notes()
+        if note is None:
+            click.secho('Clearing your weight and nutrition tracker ')
+            clear_tracker()
+    elif note:
+        day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True,
+                           type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
         msg = click.prompt(text='Enter the note you would like to add for %s' % day)
 
         print()
         click.secho(' Adding note >> ', nl=False, reverse=True)
         click.secho('%s ' % msg, reverse=True, bold=True, nl=False)
         click.secho('<< to ', nl=False, reverse=True)
-        click.secho('%s ' % day, reverse=True, bold=True,)
+        click.secho('%s ' % day, reverse=True, bold=True, )
         print()
         # run edit notes command
 
-        if clear is None:
-            run()
-    # if update:
-    #     click.secho(' Updating food, weight, and step tracker entries... ', reverse=True)
-    #     run()
-
-    elif clear:
-        click.secho(' Clearing your spreadsheet ', reverse=True)
+        run()
     else:
         run()
 

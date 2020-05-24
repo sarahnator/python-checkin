@@ -18,17 +18,28 @@ def clear_notes():
     populate_cells(sheet.range(rng), '')
 
 
+def clear_tracker():
+    update_tracker(None)
+
+
 def update_tracker(val_list):
     # update weight first
     rng = 'B40:B46'
     value_idx = 0
-    for i in range(0, len(val_list) - 1):
-        for val in val_list:
-            # get correct cell range and values
-            if i != 0:
-                rng = rng.replace(rng[0], chr(68 + i), 2)  # D = 68 dec
-                value_idx = 1 + i
-        populate_cells(sheet.range(rng), val_list[value_idx])
+
+    if val_list is None:
+        length = 6
+        value = ''
+    else:
+        length = len(val_list) - 1
+    for i in range(0, length):
+        # get correct cell range and values
+        if i != 0:
+            rng = rng.replace(rng[0], chr(68 + i), 2)  # D = 68 dec
+            value_idx = 1 + i
+        if val_list:
+            value = val_list[value_idx]
+        populate_cells(sheet.range(rng), value)
 
 
 def update_date():
