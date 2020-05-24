@@ -1,5 +1,5 @@
-# PY-Checkin
-Python program that automates data retrieval from MyFitnessPal and updates a google spreadsheet with daily nutrition stats and weights. 
+# Python-Checkin
+A data retrieval automation program that migrates data from the MyFitnessPal and FitBit/Garmin APIs into google spreadsheets for data analysis.
 
 ## TODO
  * update this readme
