@@ -71,11 +71,19 @@ Any of the following specified with a flag
 def cli(clear, note, tracker, activity):
     print("Hello! Updating your spreadsheet...")
     if clear:
-        click.secho('Clearing your athlete notes ')
-        clear_notes()
-        if note is None:
-            click.secho('Clearing your weight and nutrition tracker ')
+        if not note and not activity and not tracker:
+            clear_activity()
             clear_tracker()
+            clear_tracker()
+        if note:
+            click.secho('Clearing your athlete notes... ')
+            clear_notes()
+        if tracker:
+            click.secho('Clearing your weight and nutrition tracker... ')
+            clear_tracker()
+        if activity:
+            click.secho('Clearing your activity tracker... ')
+            clear_activity()
     elif note:
         day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True,
                            type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
@@ -88,9 +96,10 @@ def cli(clear, note, tracker, activity):
         click.secho('%s ' % day, reverse=True, bold=True, )
         print()
         # run edit notes command
+        add_note(msg, day)
 
-        run()
-    else:
+    #default behavior
+    elif not note and not clear:
         run()
 
     click.secho(' All entries updated! ', reverse=True)

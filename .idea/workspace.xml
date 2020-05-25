@@ -55,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590347645829</updated>
-      <workItem from="1590347652872" duration="3341000" />
+      <workItem from="1590347652872" duration="7065000" />
     </task>
     <servers />
   </component>
@@ -74,9 +74,17 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590365424296">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1590365424296" />
     <state x="442" y="171" key="RollbackChangesDialog" timestamp="1590347869965">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="442" y="171" key="RollbackChangesDialog/0.23.1440.877@0.23.1440.877" timestamp="1590347869965" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1590364094069">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1590364094069" />
   </component>
 </project>
