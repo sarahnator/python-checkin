@@ -22,7 +22,9 @@
     <list default="true" id="9d60ccbc-a20b-4ee2-8e85-27ce9d8cadf7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/checkin.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/checkin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/spreadsheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spreadsheet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/commands/clear.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/commands/note.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/commands/refresh.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590347645829</updated>
-      <workItem from="1590347652872" duration="11225000" />
+      <workItem from="1590347652872" duration="14668000" />
     </task>
     <servers />
   </component>

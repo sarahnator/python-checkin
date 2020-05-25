@@ -50,7 +50,7 @@ def query_update():
     # print(data_list)
     update_tracker(data_list)
 
-# @click.command()
+
 # @click.option('--tracker', '-t', is_flag=True,
 # help='''This script enables you to edit the weekly weight and nutrition tracker''')
 # @click.option('--activity', '-a', is_flag=True,
@@ -64,75 +64,103 @@ def query_update():
 # > Weekly weight and nutrition tracker -t
 # > Athlete daily notes -n
 # > Weekly activity tracker -a''')
-# #
-# # @click.option('--note', '-n', is_flag=True,
-# #               help='''This script enables you to edit the athlete notes table''')
-
+#
+# @click.option('--note', '-n', is_flag=True,
+#               help='''This script enables you to edit the athlete notes table''')
+#
 #
 # @click.command()
-# # def cli(clear, note, tracker, activity):
-# def cli(clear, tracker, activity)
+# @click.pass_context
+# def cli(ctx, clear, note, tracker, activity):
+#     print(ctx.obj)
+#
+#     ctx.ensure_object(list)
+#     print(ctx.obj)
 #     print("Hello! Updating your spreadsheet...")
 #     if clear:
-#         # if not note and not activity and not tracker:
-#         #     clear_activity()
-#         #     clear_tracker()
-#         #     clear_tracker()
-#         # if note:
-#         #     click.secho('Clearing your athlete notes... ')
-#         #     clear_notes()
+#         if not note and not activity and not tracker:
+#             clear_activity()
+#             clear_tracker()
+#             clear_tracker()
+#         if note:
+#             click.secho('Clearing your athlete notes... ')
+#             clear_notes()
 #         if tracker:
 #             click.secho('Clearing your weight and nutrition tracker... ')
 #             clear_tracker()
 #         if activity:
 #             click.secho('Clearing your activity tracker... ')
 #             clear_activity()
-#     # elif note:
-#     #     day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True,
-#     #                        type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
-#     #     msg = click.prompt(text='Enter the note you would like to add for %s' % day)
-#     #
-#     #     print()
-#     #     click.secho(' Adding note >> ', nl=False, reverse=True)
-#     #     click.secho('%s ' % msg, reverse=True, bold=True, nl=False)
-#     #     click.secho('<< to ', nl=False, reverse=True)
-#     #     click.secho('%s ' % day, reverse=True, bold=True, )
-#     #     print()
-#     #     # run edit notes command
-#     #     add_note(msg, day)
+#     elif note:
+#         day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True,
+#                            type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
+#         msg = click.prompt(text='Enter the note you would like to add for %s' % day)
 #
-#     #default behavior
-#     # elif not note and not clear:
-#     #     query_update()
+#         print()
+#         click.secho(' Adding note >> ', nl=False, reverse=True)
+#         click.secho('%s ' % msg, reverse=True, bold=True, nl=False)
+#         click.secho('<< to ', nl=False, reverse=True)
+#         click.secho('%s ' % day, reverse=True, bold=True, )
+#         print()
+#         # run edit notes command
+#         add_note(msg, day)
+#
+#     # default behavior
+#     elif not note and not clear:
+#         query_update()
 #
 #     click.secho(' All entries updated! ', reverse=True)
 
-import os
 
-plugin_folder = os.path.join(os.path.dirname(__file__), 'commands')
+@click.group(chain=True)
+def cli():
+    pass
+@cli.command()  # @cli, not @click!
+def note():
+    """
+    \b
+    Enables you to add a note to the athlete notes table.
+    """
+    day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True,
+                        type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
+    msg = click.prompt(text='Enter the note you would like to add for %s' % day)
 
-class MyCLI(click.MultiCommand):
+    print()
+    click.secho(' Adding note >> ', nl=False, reverse=True)
+    click.secho('%s ' % msg, reverse=True, bold=True, nl=False)
+    click.secho('<< to ', nl=False, reverse=True)
+    click.secho('%s ' % day, reverse=True, bold=True, )
+    print()
 
-    def list_commands(self, ctx):
-        rv = []
-        for filename in os.listdir(plugin_folder):
-            if filename.endswith('.py'):
-                rv.append(filename[:-3])
-        rv.sort()
-        return rv
+@click.option('--tracker', '-t', is_flag=True,
+        help='''This script enables you to edit the weekly weight and nutrition tracker''')
+@click.option('--activity', '-a', is_flag=True,
+        help='''This script enables you to edit the weekly activity tracker''')
+@click.option('--notes', '-n', is_flag=True,
+        help='''This script enables you to edit the athlete notes table''')
+@cli.command()  # @cli, not @click!
+def clear(tracker, activity, notes):
+    if tracker:
+        print('clearing tracker')
+    if activity:
+        print('clearing activity')
+    if notes:
+        print('clearing notes')
+    if not tracker and not activity and not notes:
+        print('clearing tracker, activity and notes')
 
-    def get_command(self, ctx, name):
-        ns = {}
-        fn = os.path.join(plugin_folder, name + '.py')
-        with open(fn) as f:
-            code = compile(f.read(), fn, 'exec')
-            eval(code, ns, ns)
-        return ns['cli']
-
-cli = MyCLI(help='This tool\'s subcommands are loaded from a '
-            'plugin folder dynamically.')
-
-
+@click.option('--tracker', '-t', is_flag=True,
+        help='''This script enables you to edit the weekly weight and nutrition tracker''')
+@click.option('--activity', '-a', is_flag=True,
+        help='''This script enables you to edit the weekly activity tracker''')
+@cli.command()
+def refresh(tracker, activity):
+    if tracker:
+        print('refreshing tracker')
+    if activity:
+        print('refreshing activity')
+    if not tracker and not activity:
+        print('refreshing tracker and activity')
 
 if __name__ == "__main__":
     cli()
