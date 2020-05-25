@@ -1,3 +1,4 @@
+import click
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import json
@@ -50,18 +51,23 @@ def populate_tracker(val_list):
     value_idx = 0
 
     if val_list is None:
-        length = 6
+        size = 6
         value = ''
+        action='Clearing tracker'
     else:
-        length = len(val_list) - 1
-    for i in range(0, length):
-        # get correct cell range and values
-        if i != 0:
-            rng = rng.replace(rng[0], chr(68 + i), 2)  # D = 68 dec
-            value_idx = 1 + i
-        if val_list:
-            value = val_list[value_idx]
-        populate_cells(sheet.range(rng), value)
+        size = len(val_list) - 1
+        action='Updating tracker'
+
+    with click.progressbar(length=size, label=action) as bar:
+        for i in range(0, size):
+            # get correct cell range and values
+            if i != 0:
+                rng = rng.replace(rng[0], chr(68 + i), 2)  # D = 68 dec
+                value_idx = 1 + i
+            if val_list:
+                value = val_list[value_idx]
+            populate_cells(sheet.range(rng), value)
+            bar.update(i)
 
 
 def update_date():
