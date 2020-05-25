@@ -19,9 +19,13 @@ def update_tracker(dict):
 
 
 def clear_all():
-    clear_tracker()
-    clear_activity()
-    clear_notes()
+    with click.progressbar(length=3, label='Clearing other entries') as bar:
+        clear_tracker()
+        bar.update(1)
+        clear_activity()
+        bar.update(2)
+        clear_notes()
+        bar.update(3)
 
 
 def clear_activity():
@@ -38,8 +42,6 @@ def add_note(msg, day):
     rng = note_rng_dict[day]
     sheet.update(rng, msg, raw=True)
 
-    # populate_cells(sheet.range(rng), msg)
-
 
 def clear_tracker():
     populate_tracker(None)
@@ -53,11 +55,12 @@ def populate_tracker(val_list):
     if val_list is None:
         size = 6
         value = ''
-        action='Clearing tracker'
+        action ='Clearing tracker'
     else:
         size = len(val_list) - 1
-        action='Updating tracker'
+        action ='Updating tracker'
 
+    #add progress bar
     with click.progressbar(length=size, label=action) as bar:
         for i in range(0, size):
             # get correct cell range and values
@@ -69,7 +72,6 @@ def populate_tracker(val_list):
             populate_cells(sheet.range(rng), value)
             bar.update(i)
 
-
 def update_date():
     sunday = get_sunday()
     sunday = '{:%m/%d/%y}'.format(sunday)
@@ -77,13 +79,13 @@ def update_date():
 
 
 def populate_cells(cell_range, val_sublist):
-    for i, cell in enumerate(cell_range):
-        if (i > len(val_sublist) - 1) or val_sublist == '':
-            cell.value = ''  # have no data for these cells
-        else:
-            cell.value = val_sublist[i]
+    with click.progressbar(enumerate(cell_range), label='Modifying cells') as bar:
+        for i, cell in enumerate(cell_range):
+            if (i > len(val_sublist) - 1) or val_sublist == '':
+                cell.value = ''  # have no data for these cells
+            else:
+                cell.value = val_sublist[i]
     sheet.update_cells(cell_range)
-
 
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds',

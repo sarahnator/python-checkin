@@ -21,94 +21,36 @@ def query_update():
 
     data_list = []  # container for data row
 
-    for (a, b) in weights:
-        # query nutrition data
-        date = a
-        y, m, d = date.year, date.month, date.day
+    with click.progressbar(weights, label='Fetching data', length=len(weights)) as bar:
+        for (a, b) in bar:
+            # query nutrition data
+            date = a
+            y, m, d = date.year, date.month, date.day
 
-        # get totals
-        day = client.get_date(y, m, d)
-        total = day.totals
+            # get totals
+            day = client.get_date(y, m, d)
+            total = day.totals
 
-        # int day totals
-        cal, pro, car, fat, fiber = 0, 0, 0, 0, 0
+            # int day totals
+            cal, pro, car, fat, fiber = 0, 0, 0, 0, 0
 
-        # check if data exists
-        if total:
-            total.pop("sodium")  # I am sodium queen DGAF - remove stat from dict
-            desired_order = ["calories", "protein", "carbohydrates", "fat", "fiber"]
-            total = {t: total[t] for t in desired_order}  # reorder list: {cal, pro, carb, fat, fiber}
-        else:
-            total = {"cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
+            # check if data exists
+            if total:
+                total.pop("sodium")  # I am sodium queen DGAF - remove stat from dict
+                desired_order = ["calories", "protein", "carbohydrates", "fat", "fiber"]
+                total = {t: total[t] for t in desired_order}  # reorder list: {cal, pro, carb, fat, fiber}
+            else:
+                total = {"cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
 
-        weight = str(b)
-        # prints most recent --> least recent
-        data_row = {"weight": weight, "date": date}
-        data_row.update(total)  # append totals
-        data_list.insert(0, data_row)  # prepend to front of list of all data
+            weight = str(b)
+            # prints most recent --> least recent
+            data_row = {"weight": weight, "date": date}
+            data_row.update(total)  # append totals
+            data_list.insert(0, data_row)  # prepend to front of list of all data
 
     # print(data_list)
     update_tracker(data_list)
 
-
-# @click.option('--tracker', '-t', is_flag=True,
-# help='''This script enables you to edit the weekly weight and nutrition tracker''')
-# @click.option('--activity', '-a', is_flag=True,
-# help='''This script enables you to edit the weekly activity tracker''')
-# # @click.option('--update', '-u', is_flag=True, help='''This script updates entries in: Weekly weight and nutrition tracker and Weekly activity tracker''')
-# @click.option('--clear', '-c', is_flag=True,
-#               help='''
-# \b
-# This script clears entries in:
-# Any of the following specified with a flag
-# > Weekly weight and nutrition tracker -t
-# > Athlete daily notes -n
-# > Weekly activity tracker -a''')
-#
-# @click.option('--note', '-n', is_flag=True,
-#               help='''This script enables you to edit the athlete notes table''')
-#
-#
-# @click.command()
-# @click.pass_context
-# def cli(ctx, clear, note, tracker, activity):
-#     print(ctx.obj)
-#
-#     ctx.ensure_object(list)
-#     print(ctx.obj)
-#     print("Hello! Updating your spreadsheet...")
-#     if clear:
-#         if not note and not activity and not tracker:
-#             clear_activity()
-#             clear_tracker()
-#             clear_tracker()
-#         if note:
-#             click.secho('Clearing your athlete notes... ')
-#             clear_notes()
-#         if tracker:
-#             click.secho('Clearing your weight and nutrition tracker... ')
-#             clear_tracker()
-#         if activity:
-#             click.secho('Clearing your activity tracker... ')
-#             clear_activity()
-#     elif note:
-#         day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True,
-#                            type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
-#         msg = click.prompt(text='Enter the note you would like to add for %s' % day)
-#
-#         print()
-#         click.secho(' Adding note >> ', nl=False, reverse=True)
-#         click.secho('%s ' % msg, reverse=True, bold=True, nl=False)
-#         click.secho('<< to ', nl=False, reverse=True)
-#         click.secho('%s ' % day, reverse=True, bold=True, )
-#         print()
-#         # run edit notes command
-#         add_note(msg, day)
-#
-#     # default behavior
-#     elif not note and not clear:
-#         query_update()
-#
 #     click.secho(' All entries updated! ', reverse=True)
 
 
@@ -127,14 +69,14 @@ def note():
                        type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
     msg = click.prompt(text='Enter the note you would like to add for %s' % day)
 
-    print()
-    click.secho(' Adding note >> ', nl=False, reverse=True)
-    click.secho('%s ' % msg, reverse=True, bold=True, nl=False)
-    click.secho('<< to ', nl=False, reverse=True)
-    click.secho('%s ' % day, reverse=True, bold=True, )
-    print()
-
     add_note(msg, day)
+
+    click.secho('The note >> ', nl=False)
+    click.secho('%s ' % msg, bold=True, nl=False)
+    click.secho('<< has been added to ', nl=False)
+    click.secho('%s.' % day, bold=True, )
+
+
 
 
 @click.option('--tracker', '-t', is_flag=True,
@@ -152,18 +94,13 @@ def clear(tracker, activity, notes):
     unless given specific sections to clear by option parameters.
     """
     if tracker:
-        print('clearing tracker')
         clear_tracker()
     if activity:
-        print('clearing activity')
         clear_activity()
     if notes:
-        print('clearing notes')
         clear_notes()
     if not tracker and not activity and not notes:
-        print('clearing tracker, activity and notes')
         clear_all()
-
 
 @click.option('--tracker', '-t', is_flag=True,
               help='''This script enables you to make changes to the weekly weight/nutrition tracker''')
@@ -177,13 +114,11 @@ def update(tracker, activity):
     Updates both the weight/nutrition tracker and activity tracker, unless given an option parameter.
     """
     if tracker:
-        print('updating tracker')
         query_update()
     if activity:
-        print('updating activity')
+        print('I would update activity but I haven\'t integrated the fitbit api')
         #make update_activity() func
     if not tracker and not activity:
-        print('updating tracker and activity')
         query_update()
 
 if __name__ == "__main__":
