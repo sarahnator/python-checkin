@@ -16,9 +16,17 @@ def update_tracker(dict):
     update_date()
     populate_tracker(val_list)
 
+
+def clear_all():
+    clear_tracker()
+    clear_activity()
+    clear_notes()
+
+
 def clear_activity():
     rng = activity_rng_dict['combined']
     populate_cells(sheet.range(rng), '')
+
 
 def clear_notes():
     rng = 'B20:G33'
@@ -29,8 +37,8 @@ def add_note(msg, day):
     rng = note_rng_dict[day]
     sheet.update(rng, msg, raw=True)
 
-
     # populate_cells(sheet.range(rng), msg)
+
 
 def clear_tracker():
     populate_tracker(None)

@@ -114,15 +114,17 @@ def query_update():
 
 @click.group(chain=True)
 def cli():
-    pass
-@cli.command()  # @cli, not @click!
+    click.echo('Hello! Making changes to your spreadsheet...')
+
+@cli.command('note', short_help='add note')  # @cli, not @click!
 def note():
     """
     \b
     Enables you to add a note to the athlete notes table.
+    Once called, the script will prompt for a day of the week and a message to add to that day's note entry.
     """
     day = click.prompt(text='Enter day of week to attach a note entry:', show_choices=True,
-                        type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
+                       type=click.Choice(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], case_sensitive=False))
     msg = click.prompt(text='Enter the note you would like to add for %s' % day)
 
     print()
@@ -132,35 +134,62 @@ def note():
     click.secho('%s ' % day, reverse=True, bold=True, )
     print()
 
-@click.option('--tracker', '-t', is_flag=True,
-        help='''This script enables you to edit the weekly weight and nutrition tracker''')
-@click.option('--activity', '-a', is_flag=True,
-        help='''This script enables you to edit the weekly activity tracker''')
-@click.option('--notes', '-n', is_flag=True,
-        help='''This script enables you to edit the athlete notes table''')
-@cli.command()  # @cli, not @click!
-def clear(tracker, activity, notes):
-    if tracker:
-        print('clearing tracker')
-    if activity:
-        print('clearing activity')
-    if notes:
-        print('clearing notes')
-    if not tracker and not activity and not notes:
-        print('clearing tracker, activity and notes')
+    add_note(msg, day)
+
 
 @click.option('--tracker', '-t', is_flag=True,
-        help='''This script enables you to edit the weekly weight and nutrition tracker''')
+              help='''This script enables you to make changes to the weekly weight/nutrition tracker''')
 @click.option('--activity', '-a', is_flag=True,
-        help='''This script enables you to edit the weekly activity tracker''')
-@cli.command()
-def refresh(tracker, activity):
+              help='''This script enables you to make changes to the weekly activity tracker''')
+@click.option('--notes', '-n', is_flag=True,
+              help='''This script enables you to make changes t the athlete notes table''')
+@cli.command('clear', short_help='clear stuff')  # @cli, not @click!
+def clear(tracker, activity, notes):
+    """
+    \b
+    Enables you to clear entries.
+    Clears all entries in the athlete notes table, weight/nutrition tracker, and activity tracker,
+    unless given specific sections to clear by option parameters.
+    """
     if tracker:
-        print('refreshing tracker')
+        print('clearing tracker')
+        clear_tracker()
     if activity:
-        print('refreshing activity')
+        print('clearing activity')
+        clear_activity()
+    if notes:
+        print('clearing notes')
+        clear_notes()
+    if not tracker and not activity and not notes:
+        print('clearing tracker, activity and notes')
+        clear_all()
+
+
+@click.option('--tracker', '-t', is_flag=True,
+              help='''This script enables you to make changes to the weekly weight/nutrition tracker''')
+@click.option('--activity', '-a', is_flag=True,
+              help='''This script enables you to make changes to the weekly activity tracker''')
+@cli.command('update', short_help='get le data')
+def update(tracker, activity):
+    """
+    \b
+    Updates entries with latest API data.
+    Updates both the weight/nutrition tracker and activity tracker, unless given an option parameter.
+    """
+    if tracker:
+        print('updating tracker')
+        update_tracker()
+    if activity:
+        print('updating activity')
+        #make update_activity() func
     if not tracker and not activity:
-        print('refreshing tracker and activity')
+        print('updating tracker and activity')
+        query_update()
 
 if __name__ == "__main__":
     cli()
+
+
+
+
+
