@@ -178,7 +178,7 @@ def update(tracker, activity):
     """
     if tracker:
         print('updating tracker')
-        update_tracker()
+        query_update()
     if activity:
         print('updating activity')
         #make update_activity() func
