@@ -53,7 +53,7 @@ class FitbitOauth2Client(object):
             auto_refresh_url=self.refresh_token_url,
             token_updater=refresh_cb,
             token=token,
-            redirect_uri=redirect_uri,
+            redirect_uri=None,
         ))
         self.timeout = kwargs.get("timeout", None)
 
@@ -223,7 +223,7 @@ class Fitbit(object):
             refresh_token=refresh_token,
             expires_at=expires_at,
             refresh_cb=refresh_cb,
-            redirect_uri=redirect_uri,
+            # redirect_uri=redirect_uri,
             **kwargs
         )
 

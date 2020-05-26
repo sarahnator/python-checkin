@@ -26,11 +26,12 @@ class OAuth2Server:
             client_id,
             client_secret,
             redirect_uri=redirect_uri,
-            timeout=10,
+            # timeout=10,
         )
 
         self.redirect_uri = redirect_uri
-
+    def emptyFunc(self):
+            pass
     def browser_authorize(self):
         """
         Open a browser to the authorization url and spool up a CherryPy
@@ -42,9 +43,13 @@ class OAuth2Server:
 
         # Same with redirect_uri hostname and port.
         urlparams = urlparse(self.redirect_uri)
-        cherrypy.config.update({'server.socket_host': urlparams.hostname,
-                                'server.socket_port': urlparams.port})
 
+        cherrypy.config.update({'server.socket_host': urlparams.hostname,
+                                'server.socket_port': urlparams.port,
+                                'log.screen': False,
+                                'log.access_file': '',
+                                'log.error_file': ''})
+        
         cherrypy.quickstart(self)
 
     @cherrypy.expose
