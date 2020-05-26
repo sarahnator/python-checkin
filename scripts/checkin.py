@@ -2,6 +2,7 @@ import myfitnesspal as pal
 from scripts.spreadsheet import *
 from scripts.dateUtils import *
 import click
+from scripts.fitbit import *
 
 
 # !/usr/bin/env python
@@ -57,6 +58,7 @@ def query_update():
 @click.group(chain=True)
 def cli():
     click.echo('Hello! Making changes to your spreadsheet...')
+    init_bit_client()
 
 @cli.command('note', short_help='add note')  # @cli, not @click!
 def note():
