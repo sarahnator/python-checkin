@@ -58,7 +58,6 @@ def query_update():
 @click.group(chain=True)
 def cli():
     click.echo('Hello! Making changes to your spreadsheet...')
-    init_bit_client()
 
 @cli.command('note', short_help='add note')  # @cli, not @click!
 def note():
@@ -118,6 +117,7 @@ def update(tracker, activity):
     if tracker:
         query_update()
     if activity:
+        query_fitbit()
         print('I would update activity but I haven\'t integrated the fitbit api')
         #make update_activity() func
     if not tracker and not activity:
