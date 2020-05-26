@@ -6,6 +6,7 @@ import json
 from scripts.dateUtils import *
 
 
+
 # def init_bit_client():
 #get credentials from json file
 with open('json/creds.json') as src:
@@ -25,26 +26,37 @@ print('auth success!!!!')
 
 today = str(datetime.datetime.now().strftime("%Y-%m-%d"))
 yesterday = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y-%m-%d"))
-sunday = str(get_sunday())
+# sunday gives 500 error because I don't have fitbit data from then
+# sunday = str(get_sunday())
 
 
 #steps and distance query
 def query_fitbit():
-    print(today)
 
-    time = auth2_client.time_series(resource="activities/steps", period='max')
-    print(time)
-    # stepsActivites = auth2_client.time_series('activities/steps', base_date=sunday, end_date=today)
-    # trackerSteps = auth2_client.time_series('activities/tracker/steps', userID='-', base_date=sunday, end_date=today)
-    # print("activity steps: ", stepsActivites, " tracker steps: ", trackerSteps)
+    # format: {'activities-steps': [{'dateTime': '2020-05-25', 'value': '11519'}, {'dateTime': '2020-05-26', 'value': '3428'}]}
+    # {'activities-distance': [{'dateTime': '2020-05-25', 'value': '4.93872658484712'}, {'dateTime': '2020-05-26', 'value': '1.46974170786144'}]}
+    steps_log = auth2_client.time_series(resource="activities/steps", base_date=yesterday, end_date=today)
+    dist_log = auth2_client.time_series(resource="activities/distance", base_date=yesterday, end_date=today)
 
-    # resource URL
-    # GET / 1 / user / [user - id] / [resource - path] / date / [base - date] / [end - date].json
-    #resource path opts:
-        # activities / tracker / steps
-        #activities/tracker/distance
-        #example request:
-    # GET https: // api.fitbit.com / 1 / user / - / activities / steps / date / today / 1m.json
-    """https://dev.fitbit.com/build/reference/web-api/activity/"""
+    # convert to dict-array
+    #f [{'dateTime': '2020-05-25', 'value': '4.93872658484712'}, {'dateTime': '2020-05-26', 'value': '1.46974170786144'}]
+    steps_log = steps_log['activities-steps']
+    dist_log = dist_log['activities-distance']
 
+    # get in format
+    # steps: ['11519', '3428']
+    # dist: ['4.93872658484712', '1.46974170786144']
+    steps, dist, fitbit_data= [], [], []
+
+    for i in range(0, len(steps_log)):
+        steps_log[i].pop('dateTime')
+        dist_log[i].pop('dateTime')
+        steps.append(steps_log[i]['value'])
+        dist.append(dist_log[i]['value'])
+
+    # combine into format
+    #       steps                           dist
+    # [['11519', '3428'], ['4.93872658484712', '1.46974170786144']]
+    fitbit_data.append(steps)
+    fitbit_data.append(dist)
 
