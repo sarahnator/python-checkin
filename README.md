@@ -3,7 +3,7 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  
  ## Current/Future Features
  * [X] Enables data retrieval from MyFitnessPal 
- * [X} Enables data retrieval from FitBit
+ * [X] Enables data retrieval from FitBit
  * [X] Enables user to remotely edit a spreadsheet (see Notes section)
  * [X] Editing allows a user to add notes to the Athlete Notes table, populate the Activity Tracker and Nutrition and Weight Tracker fields with the latest MFP/FItbit data, or clear any of all the editable regions mentioned.
  * [X] A [command-line interface](https://click.palletsprojects.com/en/7.x/) that allows the user to conveniently chain multiple commands for ease of use and access help page for any commands.
