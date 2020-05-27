@@ -14,6 +14,7 @@ def fitbit_query():
     CLIENT_ID = data['fitbit-clientID']
     CLIENT_SECRET = data['fitbit-secret']
 
+    
     #use client id and secret to get access and refresh tokens that authorize access to the data
     server = Oauth2.OAuth2Server(CLIENT_ID, CLIENT_SECRET)
     server.browser_authorize()
