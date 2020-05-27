@@ -117,11 +117,10 @@ def update(tracker, activity):
     if tracker:
         query_update()
     if activity:
-        query_fitbit()
-        print('I would update activity but I haven\'t integrated the fitbit api')
-        #make update_activity() func
+        populate_activity(fitbit_query())
     if not tracker and not activity:
         query_update()
+        populate_activity(fitbit_query())
 
 if __name__ == "__main__":
     cli()

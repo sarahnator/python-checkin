@@ -33,6 +33,16 @@ def clear_activity():
     populate_cells(sheet.range(rng), '')
 
 
+def populate_activity(values):
+    with click.progressbar(length=2, label='Modifying activity tracker') as bar:
+        rng = activity_rng_dict['steps']
+        populate_cells(sheet.range(rng), values[0])
+        bar.update(1)
+        rng = activity_rng_dict['miles']
+        populate_cells(sheet.range(rng), values[1])
+        bar.update(2)
+
+
 def clear_notes():
     rng = 'B20:G33'
     populate_cells(sheet.range(rng), '')
@@ -55,13 +65,13 @@ def populate_tracker(val_list):
     if val_list is None:
         size = 6
         value = ''
-        action ='Clearing tracker'
+        action = 'Clearing tracker'
     else:
         # is this size calc right?
         size = len(val_list) - 1
-        action ='Updating tracker'
+        action = 'Updating tracker'
 
-    #add progress bar
+    # add progress bar
     with click.progressbar(length=size, label=action) as bar:
         for i in range(0, size):
             # get correct cell range and values
@@ -73,6 +83,7 @@ def populate_tracker(val_list):
             populate_cells(sheet.range(rng), value)
             bar.update(i)
 
+
 def update_date():
     sunday = get_sunday()
     sunday = '{:%m/%d/%y}'.format(sunday)
@@ -80,6 +91,7 @@ def update_date():
 
 
 def populate_cells(cell_range, val_sublist):
+    # this doesn't show up
     with click.progressbar(enumerate(cell_range), label='Modifying cells') as bar:
         for i, cell in enumerate(cell_range):
             if (i > len(val_sublist) - 1) or val_sublist == '':
@@ -87,6 +99,7 @@ def populate_cells(cell_range, val_sublist):
             else:
                 cell.value = val_sublist[i]
     sheet.update_cells(cell_range)
+
 
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds',
