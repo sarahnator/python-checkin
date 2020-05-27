@@ -6,14 +6,13 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  * [X} Enables data retrieval from FitBit
  * [X] Enables user to remotely edit a spreadsheet (see Notes section)
  * [X] Editing allows a user to add notes to the Athlete Notes table, populate the Activity Tracker and Nutrition and Weight Tracker fields with the latest MFP/FItbit data, or clear any of all the editable regions mentioned.
- * [X] A command-line interface that allows the user to chain multiple commands for ease of use and convenience and to access help page for any commands.
+ * [X] A [command-line interface](https://click.palletsprojects.com/en/7.x/) that allows the user to conveniently chain multiple commands for ease of use and access help page for any commands.
  * [X] User can see progress of requests through progress bars and outputs to the terminal.
  * [X] Secure MFP credential storage in system keyring.
  * [ ] Enable data retrieval from Garmin API
- * [ ] Create a speadsheet class to contain lookup dictionaries of all editable regions and include functions to add or set a region of the spreadsheet to access.
- * [ ] Create setup function to prompt user for credentials and accordingly store them.
- * [ ] Add pypy python interpreter to speed up execution
- * [ ] Create PyPi package for GP clients to use this program
+ * [ ] python interpreter for faster execution
+ * [ ] ...
+
  
  
 ## Configuration
@@ -58,3 +57,9 @@ Project licensed under the MIT License
  * Sample Dummy Credentials storage file
  * Unchecked stuff in features
  * Video walkthrough of commands/animation
+ * Truncate distance values from fitbit data
+ * [ ] Garmin API
+ * [ ] Create a speadsheet class to contain lookup dictionaries of all editable regions and include functions to add or set a region of the spreadsheet to access.
+ * [ ] Create setup function to prompt user for credentials and accordingly store them.
+ * [ ] Add pypy python interpreter to speed up execution
+ * [ ] Create PyPi package for GP clients to use this program
