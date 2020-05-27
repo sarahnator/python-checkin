@@ -55,4 +55,6 @@ Project licensed under the MIT License
 ## TODO
  * update this readme
  * DRY code
+ * Sample Dummy Credentials storage file
  * Unchecked stuff in features
+ * Video walkthrough of commands/animation
