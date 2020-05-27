@@ -13,8 +13,6 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  * [ ] python interpreter for faster execution
  * [ ] ...
 
- 
- 
 ## Configuration
 * Gspread: Create credentials [here](https://gspread.readthedocs.io/en/latest/oauth2.html), follow the setup instructions detailed in [this post](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 * Fitbit: Register personal application [here](https://dev.fitbit.com/apps/new), following these [instructions](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873)
@@ -42,7 +40,6 @@ sudo pip install -r requirements.txt
 
 ## Notes
 The spreadsheet described above is based on the features of spreadsheets accessible to clients of Gifted Performance LLC.
-
 
 ## License
 Project licensed under the MIT License
