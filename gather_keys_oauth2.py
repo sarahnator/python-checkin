@@ -6,6 +6,7 @@ import threading
 import traceback
 import webbrowser
 
+import urllib.request
 from urllib.parse import urlparse
 from base64 import b64encode
 from fitbit.api import Fitbit
@@ -41,11 +42,19 @@ class OAuth2Server:
         # Open the web browser in a new thread for command-line browser support
         threading.Timer(1, webbrowser.open, args=(url,)).start()
 
+        # response = urllib.request.urlopen(url,)
+        # html = response.read()
+
+        # request = urllib.request.Request(url, headers='')
+        # opener = urllib.request.build_opener()
+        # response = opener.open(request)
+        
         # Same with redirect_uri hostname and port.
         urlparams = urlparse(self.redirect_uri)
 
         cherrypy.config.update({'server.socket_host': urlparams.hostname,
                                 'server.socket_port': urlparams.port,
+                                'checker.on': False,
                                 'log.screen': False,
                                 'log.access_file': '',
                                 'log.error_file': ''})
