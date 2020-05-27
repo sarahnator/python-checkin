@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9d60ccbc-a20b-4ee2-8e85-27ce9d8cadf7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gather_keys_oauth2.py" beforeDir="false" afterPath="$PROJECT_DIR$/gather_keys_oauth2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/fitbit.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/fitbit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590347645829</updated>
-      <workItem from="1590347652872" duration="45772000" />
+      <workItem from="1590347652872" duration="48040000" />
     </task>
     <servers />
   </component>
