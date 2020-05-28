@@ -21,8 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9d60ccbc-a20b-4ee2-8e85-27ce9d8cadf7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/checkin.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/checkin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/fitbit.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gather_keys_oauth2.py" beforeDir="false" afterPath="$PROJECT_DIR$/gather_keys_oauth2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/requestUtils.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/spreadsheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spreadsheet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +61,29 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.commandLine">
+  <component name="RunManager" selected="Python.checkin">
+    <configuration name="checkin" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="py-checkintemp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/checkin.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="commandLine" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="py-checkintemp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,6 +152,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.checkin" />
         <item itemvalue="Python.commandLine" />
         <item itemvalue="Python.requestUtils" />
         <item itemvalue="Python.gather_keys_oauth2" />
@@ -145,7 +169,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590347645829</updated>
-      <workItem from="1590347652872" duration="62063000" />
+      <workItem from="1590347652872" duration="65401000" />
+      <workItem from="1590688380804" duration="139000" />
+      <workItem from="1590689496832" duration="446000" />
     </task>
     <servers />
   </component>
@@ -162,44 +188,49 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="406" y="76" key="#checkin" timestamp="1590689521876">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="406" y="76" key="#checkin/0.23.1440.877@0.23.1440.877" timestamp="1590689521876" />
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590365424296">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1590365424296" />
-    <state width="1398" height="231" key="GridCell.Tab.0.bottom" timestamp="1590635167561">
+    <state width="1398" height="286" key="GridCell.Tab.0.bottom" timestamp="1590688375567">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1590635167561" />
-    <state width="1398" height="231" key="GridCell.Tab.0.center" timestamp="1590635167558">
+    <state width="1398" height="286" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1590688375567" />
+    <state width="1398" height="286" key="GridCell.Tab.0.center" timestamp="1590688375566">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1590635167558" />
-    <state width="1398" height="231" key="GridCell.Tab.0.left" timestamp="1590635167558">
+    <state width="1398" height="286" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1590688375566" />
+    <state width="1398" height="286" key="GridCell.Tab.0.left" timestamp="1590688375566">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1590635167558" />
-    <state width="1398" height="231" key="GridCell.Tab.0.right" timestamp="1590635167559">
+    <state width="1398" height="286" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1590688375566" />
+    <state width="1398" height="286" key="GridCell.Tab.0.right" timestamp="1590688375567">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1590635167559" />
-    <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1590630175812">
+    <state width="1398" height="286" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1590688375567" />
+    <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1590688375568">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="286" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1590630175812" />
-    <state width="1398" height="286" key="GridCell.Tab.1.center" timestamp="1590630175811">
+    <state width="1398" height="286" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1590688375568" />
+    <state width="1398" height="286" key="GridCell.Tab.1.center" timestamp="1590688375568">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="286" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1590630175811" />
-    <state width="1398" height="286" key="GridCell.Tab.1.left" timestamp="1590630175811">
+    <state width="1398" height="286" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1590688375568" />
+    <state width="1398" height="286" key="GridCell.Tab.1.left" timestamp="1590688375567">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="286" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1590630175811" />
-    <state width="1398" height="286" key="GridCell.Tab.1.right" timestamp="1590630175811">
+    <state width="1398" height="286" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1590688375567" />
+    <state width="1398" height="286" key="GridCell.Tab.1.right" timestamp="1590688375568">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="286" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1590630175811" />
+    <state width="1398" height="286" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1590688375568" />
     <state x="442" y="171" key="RollbackChangesDialog" timestamp="1590347869965">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

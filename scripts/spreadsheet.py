@@ -67,6 +67,7 @@ def populate_tracker(val_list):
         value = ''
         action = 'Clearing tracker'
     else:
+        # is this size calc right?
         size = len(val_list) - 1
         action = 'Updating tracker'
 
@@ -95,6 +96,7 @@ def populate_cells(cell_range, val_sublist):
             cell.value = ''  # have no data for these cells
         else:
             cell.value = val_sublist[i]
+    sheet.update_cells(cell_range)
 
 
 # use creds to create a client to interact with the Google Drive API

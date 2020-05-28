@@ -64,15 +64,6 @@ class OAuth2Server:
         if code:
             try:
                 
-                ######edit: write code to  json file
-                with open("json/creds.json", "r") as jsonFile:
-                    creds = json.load(jsonFile)
-                tmp1 = creds['fitbit-code']
-                creds['fitbit-token'] = code
-                with open("json/creds.json", "w") as jsonFile:
-                    json.dump(creds, jsonFile)
-                ######
-                
                 self.fitbit.client.fetch_access_token(code)
 
                 

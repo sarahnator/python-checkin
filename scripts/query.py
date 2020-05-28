@@ -69,6 +69,8 @@ def query_fitbit():
     CLIENT_SECRET = data['fitbit-secret']
     ACCESS_TOKEN = data['fitbit-token']
     REFRESH_TOKEN = data['fitbit-refresh-token']
+
+
     server = Oauth2.OAuth2Server(CLIENT_ID, CLIENT_SECRET)
     auth2_client = bit.Fitbit(CLIENT_ID, CLIENT_SECRET, oauth2=True, access_token=ACCESS_TOKEN,
                               refresh_token=REFRESH_TOKEN)
@@ -82,7 +84,6 @@ def query_fitbit():
     try:
         auth2_client.time_series(resource="activities/steps", base_date=sunday, end_date=today)
     except bit.exceptions.HTTPUnauthorized:
-        #refresh_token()
         server.browser_authorize()
         ACCESS_TOKEN = str(server.fitbit.client.session.token['access_token'])
         REFRESH_TOKEN = str(server.fitbit.client.session.token['refresh_token'])
@@ -98,7 +99,6 @@ def query_fitbit():
             json.dump(creds, jsonFile)
         auth2_client = bit.Fitbit(CLIENT_ID, CLIENT_SECRET, oauth2=True, access_token=ACCESS_TOKEN,
                                   refresh_token=REFRESH_TOKEN)
-
 
     # steps and distance query
     print("Querying fitbit...")
