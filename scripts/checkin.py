@@ -67,7 +67,7 @@ def update(tracker, activity):
     Updates both the weight/nutrition tracker and activity tracker, unless given an option parameter.
     """
     if tracker:
-        populate_tracker(query_mfp())
+        tracker_v2(query_mfp())
     if activity:
         populate_activity(query_fitbit())
     if not tracker and not activity:
