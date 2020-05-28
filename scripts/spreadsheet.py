@@ -67,7 +67,6 @@ def populate_tracker(val_list):
         value = ''
         action = 'Clearing tracker'
     else:
-        # is this size calc right?
         size = len(val_list) - 1
         action = 'Updating tracker'
 

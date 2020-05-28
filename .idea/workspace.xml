@@ -21,11 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9d60ccbc-a20b-4ee2-8e85-27ce9d8cadf7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fitbit/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/fitbit/exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gather_keys_oauth2.py" beforeDir="false" afterPath="$PROJECT_DIR$/gather_keys_oauth2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/checkin.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/checkin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/fitbit.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/fitbit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/fitbit.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/query.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/spreadsheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spreadsheet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +60,29 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.requestUtils">
+  <component name="RunManager" selected="Python.commandLine">
+    <configuration name="commandLine" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="py-checkintemp" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/commandLine.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="gather_keys_oauth2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="py-checkintemp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -110,6 +129,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.commandLine" />
         <item itemvalue="Python.requestUtils" />
         <item itemvalue="Python.gather_keys_oauth2" />
       </list>
@@ -125,7 +145,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590347645829</updated>
-      <workItem from="1590347652872" duration="60894000" />
+      <workItem from="1590347652872" duration="62063000" />
     </task>
     <servers />
   </component>
@@ -148,22 +168,22 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1590365424296" />
-    <state width="1398" height="231" key="GridCell.Tab.0.bottom" timestamp="1590630391962">
+    <state width="1398" height="231" key="GridCell.Tab.0.bottom" timestamp="1590635167561">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1590630391962" />
-    <state width="1398" height="231" key="GridCell.Tab.0.center" timestamp="1590630391962">
+    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1590635167561" />
+    <state width="1398" height="231" key="GridCell.Tab.0.center" timestamp="1590635167558">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1590630391962" />
-    <state width="1398" height="231" key="GridCell.Tab.0.left" timestamp="1590630391962">
+    <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1590635167558" />
+    <state width="1398" height="231" key="GridCell.Tab.0.left" timestamp="1590635167558">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1590630391962" />
-    <state width="1398" height="231" key="GridCell.Tab.0.right" timestamp="1590630391962">
+    <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1590635167558" />
+    <state width="1398" height="231" key="GridCell.Tab.0.right" timestamp="1590635167559">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1590630391962" />
+    <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1590635167559" />
     <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1590630175812">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -193,8 +213,20 @@
     </state>
     <state x="450" y="305" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.877@0.23.1440.877" timestamp="1590458540611" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/checkin.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/python_checkin$requestUtils.coverage" NAME="requestUtils Coverage Results" MODIFIED="1590630327882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/python_checkin$requestUtils.coverage" NAME="requestUtils Coverage Results" MODIFIED="1590635134175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/python_checkin$gather_keys_oauth2.coverage" NAME="gather_keys_oauth2 Coverage Results" MODIFIED="1590629148227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python_checkin$commandLine.coverage" NAME="commandLine Coverage Results" MODIFIED="1590635141355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
   </component>
 </project>
