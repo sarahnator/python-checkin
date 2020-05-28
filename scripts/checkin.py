@@ -4,25 +4,30 @@ from scripts.dateUtils import *
 import click
 from scripts.fitbit import *
 
-
 # !/usr/bin/env python
 
 def query_update():
+    print("Querying MyFitnessPal...")
     # init connection to mfp api
     with open('json/creds.json') as src:
         data = json.load(src)
     client = pal.Client(data['email'])
 
-    # query weights
-    last_sunday = get_sunday()
-    y, m, d = last_sunday.year, last_sunday.month, last_sunday.day
-    day = datetime.date(y, m, d)
-    weights = client.get_measurements('Weight', day)
-    weights = list(weights.items())  # convert ordered dictionary to list
+    with click.progressbar(length=4, label='Fetching weight trends') as bar:
+        # query weights
+        last_sunday = get_sunday()
+        bar.update(1)
+        y, m, d = last_sunday.year, last_sunday.month, last_sunday.day
+        day = datetime.date(y, m, d)
+        bar.update(2)
+        weights = client.get_measurements('Weight', day)
+        bar.update(3)
+        weights = list(weights.items())  # convert ordered dictionary to list
+        bar.update(4)
 
     data_list = []  # container for data row
 
-    with click.progressbar(weights, label='Fetching data', length=len(weights)) as bar:
+    with click.progressbar(weights, label='Fetching nutrition data', length=len(weights)) as bar:
         for (a, b) in bar:
             # query nutrition data
             date = a

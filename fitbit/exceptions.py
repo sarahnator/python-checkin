@@ -1,6 +1,5 @@
 import json
 
-
 class BadResponse(Exception):
     """
     Currently used if the response can't be json encoded, despite a .json extension

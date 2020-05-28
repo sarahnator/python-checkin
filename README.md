@@ -35,7 +35,7 @@ $ python3 -V
 ```
 Install required python3 modules:
 ```angular2
-sudo pip install -r requirements.txt
+$ sudo pip install -r requirements.txt
 ```
 
 ## Notes
@@ -45,7 +45,7 @@ The spreadsheet described above is based on the features of spreadsheets accessi
 Project licensed under the MIT License
 
 ## Acknowledgments
-* @coddingtonbear's [myfitnesspal API](https://github.com/coddingtonbear/python-myfitnesspal.git)
+* Coddingtonbear [myfitnesspal API](https://github.com/coddingtonbear/python-myfitnesspal.git)
 * ORCAS [fibit API](https://github.com/orcasgit/python-fitbit)
 
 ## TODO

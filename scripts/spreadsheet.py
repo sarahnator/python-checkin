@@ -91,14 +91,11 @@ def update_date():
 
 
 def populate_cells(cell_range, val_sublist):
-    # this doesn't show up
-    with click.progressbar(enumerate(cell_range), label='Modifying cells') as bar:
-        for i, cell in enumerate(cell_range):
-            if (i > len(val_sublist) - 1) or val_sublist == '':
-                cell.value = ''  # have no data for these cells
-            else:
-                cell.value = val_sublist[i]
-    sheet.update_cells(cell_range)
+    for i, cell in enumerate(cell_range):
+        if (i > len(val_sublist) - 1) or val_sublist == '':
+            cell.value = ''  # have no data for these cells
+        else:
+            cell.value = val_sublist[i]
 
 
 # use creds to create a client to interact with the Google Drive API

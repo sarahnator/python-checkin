@@ -5,6 +5,7 @@ import sys
 import threading
 import traceback
 import webbrowser
+import json
 
 import urllib.request
 import requests_oauthlib
@@ -31,14 +32,16 @@ class OAuth2Server:
         )
 
         self.redirect_uri = redirect_uri
-    def emptyFunc(self):
-            pass
     def browser_authorize(self):
         """
         Open a browser to the authorization url and spool up a CherryPy
         server to accept the response
         """
         url, _ = self.fitbit.client.authorize_token_url()
+
+        # Open the web browser in a new thread for command-line browser support
+        threading.Timer(1, webbrowser.open, args=(url,)).start()
+
         # Same with redirect_uri hostname and port.
         urlparams = urlparse(self.redirect_uri)
 
@@ -60,7 +63,19 @@ class OAuth2Server:
         error = None
         if code:
             try:
+                
+                ######edit: write code to  json file
+                with open("json/creds.json", "r") as jsonFile:
+                    creds = json.load(jsonFile)
+                tmp1 = creds['fitbit-code']
+                creds['fitbit-token'] = code
+                with open("json/creds.json", "w") as jsonFile:
+                    json.dump(creds, jsonFile)
+                ######
+                
                 self.fitbit.client.fetch_access_token(code)
+
+                
             except MissingTokenError:
                 error = self._fmt_failure(
                     'Missing access token parameter.</br>Please check that '
