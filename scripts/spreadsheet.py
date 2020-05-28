@@ -10,14 +10,6 @@ note_rng_dict = {"Mon": 'B20:B21', "Tue": 'B22:G23', "Wed": 'B24:G25', "Thu": 'B
 activity_rng_dict = {"steps": 'B54:B60', "miles": 'C54:C60', "combined": 'B54:C60'}
 
 
-def update_tracker(dict):
-    # format:   [['122.5', '123.3', '123.2', '123.4'], --> weight    ['05-17', '05-18', '05-19', '05-20'],  --> date   [2321, 2347, 2324, 2316], --> cals
-    #           [298, 301, 298, 295], --> pro   [63, 65, 63, 63], --> fat   [154, 153, 154, 152], --> pro   [62, 62, 63, 67]] --> fiber
-    val_list = [list(col) for col in zip(*[d.values() for d in dict])]
-    update_date()
-    populate_tracker(val_list)
-
-
 def clear_all():
     with click.progressbar(length=3, label='Clearing other entries') as bar:
         clear_tracker()
@@ -58,6 +50,9 @@ def clear_tracker():
 
 
 def populate_tracker(val_list):
+    #update date col
+    update_date()
+
     # update weight first
     rng = 'B40:B46'
     value_idx = 0

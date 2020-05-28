@@ -11,6 +11,7 @@ from fitbit import exceptions
 
 def query_mfp():
     print("Querying MyFitnessPal...")
+
     # init connection to mfp api
     with open('json/creds.json') as src:
         data = json.load(src)
@@ -57,8 +58,17 @@ def query_mfp():
             data_row.update(total)  # append totals
             data_list.insert(0, data_row)  # prepend to front of list of all data
 
-    # print(data_list)
-    update_tracker(data_list)
+    # data list format:
+    # [{'weight': '122.9', 'date': datetime.date(2020, 5, 24), 'calories': 2316, 'protein': 154, 'carbohydrates': 294,
+    #   'fat': 65, 'fiber': 62},
+    #  {'weight': '123.0', 'date': datetime.date(2020, 5, 28), 'calories': 2272, 'protein': 153, 'carbohydrates': 291,
+    #   'fat': 63, 'fiber': 67}]
+
+    mfp_data = [list(col) for col in zip(*[d.values() for d in data_list])]
+    # reformat:   [['122.5', '123.3', '123.2', '123.4'], --> weight    ['05-17', '05-18', '05-19', '05-20'],  --> date   [2321, 2347, 2324, 2316], --> cals
+    #           [298, 301, 298, 295], --> pro   [63, 65, 63, 63], --> fat   [154, 153, 154, 152], --> pro   [62, 62, 63, 67]] --> fiber
+
+    return mfp_data
 
 def query_fitbit():
 
@@ -79,8 +89,7 @@ def query_fitbit():
     today = str(datetime.datetime.now().strftime("%Y-%m-%d"))
     sunday = str(get_sunday().strftime("%Y-%m-%d"))
 
-    # catch 401 errors and refresh the token
-    # if token has expired,
+    # catch 401 errors and refresh the token if token has expired (pops up browser window)
     try:
         auth2_client.time_series(resource="activities/steps", base_date=sunday, end_date=today)
     except bit.exceptions.HTTPUnauthorized:
