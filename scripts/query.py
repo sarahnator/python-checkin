@@ -80,7 +80,7 @@ def query_fitbit():
     ACCESS_TOKEN = data['fitbit-token']
     REFRESH_TOKEN = data['fitbit-refresh-token']
 
-
+    # create server and  client
     server = Oauth2.OAuth2Server(CLIENT_ID, CLIENT_SECRET)
     auth2_client = bit.Fitbit(CLIENT_ID, CLIENT_SECRET, oauth2=True, access_token=ACCESS_TOKEN,
                               refresh_token=REFRESH_TOKEN)
@@ -89,7 +89,7 @@ def query_fitbit():
     today = str(datetime.datetime.now().strftime("%Y-%m-%d"))
     sunday = str(get_sunday().strftime("%Y-%m-%d"))
 
-    # catch 401 errors and refresh the token if token has expired (pops up browser window)
+    # catch 401 error / refresh the token if token has expired (pops up browser window)
     try:
         auth2_client.time_series(resource="activities/steps", base_date=sunday, end_date=today)
     except bit.exceptions.HTTPUnauthorized:
@@ -121,9 +121,8 @@ def query_fitbit():
     steps_log = steps_log['activities-steps']
     dist_log = dist_log['activities-distance']
 
-    # get in format
-    # steps: ['11519', '3428']
-    # dist: ['4.93872658484712', '1.46974170786144']
+    # reformat
+    # steps: ['11519', '3428']  dist: ['4.93872658484712', '1.46974170786144']
     steps, dist, fitbit_data = [], [], []
     for i in range(0, len(steps_log)):
         steps_log[i].pop('dateTime')
@@ -133,9 +132,8 @@ def query_fitbit():
         d = float("%.3F" % float(dist_log[i]['value']))
         dist.append(d)
 
-
-    # combine into format
-    #       steps                           dist
+    # reformat
+    #    --- steps ---                 ---  dist ---
     # [['11519', '3428'], ['4.93872658484712', '1.46974170786144']]
     fitbit_data.append(steps)
     fitbit_data.append(dist)
