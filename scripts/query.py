@@ -129,7 +129,9 @@ def query_fitbit():
         steps_log[i].pop('dateTime')
         dist_log[i].pop('dateTime')
         steps.append(int(steps_log[i]['value']))
-        dist.append(float(dist_log[i]['value']))
+        # truncate to 3 decimal places
+        d = float("%.3F" % float(dist_log[i]['value']))
+        dist.append(d)
 
 
     # combine into format
