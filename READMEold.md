@@ -15,6 +15,10 @@ Tools needed:
 * Since MyFitnessPal's api is private-access only, you'll need @coddingtonbear's
 [myfitnesspal api workaround](https://github.com/coddingtonbear/python-myfitnesspal.git).
 
+Check your python3 version with the following command. You may need >=3.7 on your system.
+```angular2
+$ python3 -V
+```
 ```md
 # installing pip:
 >$ curl https://bootstrap.pypa.io/get-pip.py > get-pip.py

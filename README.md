@@ -32,10 +32,6 @@ Verify that you've stored your password correctly:
 ```
 
 ## Usage
-Check your python3 version with the following command. You may need >=3.7 on your system.
-```angular2
-$ python3 -V
-```
 Install required python3 modules:
 ```angular2
 $ sudo pip install -r requirements.txt
