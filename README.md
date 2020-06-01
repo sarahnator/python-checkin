@@ -1,4 +1,4 @@
-# Python-Checkin
+# Python-Checkin : personal project
 A data retrieval automation program that migrates data from the MyFitnessPal and FitBit/Garmin APIs into google spreadsheets for data analysis.
  
  ## Current/Future Features
@@ -12,7 +12,10 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  * [ ] Enable data retrieval from Garmin API
  * [ ] python interpreter for faster execution
  * [ ] ...
-
+ 
+ ## Status
+ Currently this project is not configured for use by the general public. Setup instructions/configuration below are incomplete as of yet.
+ 
 ## Configuration
 * Gspread: Create credentials [here](https://gspread.readthedocs.io/en/latest/oauth2.html), follow the setup instructions detailed in [this post](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 * Fitbit: Register personal application [here](https://dev.fitbit.com/apps/new), following these [instructions](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873)
