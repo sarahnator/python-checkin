@@ -13,10 +13,10 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  * [ ] python interpreter for faster execution
  * [ ] ...
  
- ## Status
- Currently this project is not configured for use by the general public. Setup instructions/configuration below are incomplete as of yet.
+## Status
+Currently this project is not configured for use by the general public. This project is intended for use by members of Gifted Performance, as the program is designed to work specifically with spreadsheets of GP clients. Setup instructions/configuration below are incomplete as of yet.
  
-## Configuration
+## Configuration - needs updating
 * Gspread: Create credentials [here](https://gspread.readthedocs.io/en/latest/oauth2.html), follow the setup instructions detailed in [this post](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 * Fitbit: Register personal application [here](https://dev.fitbit.com/apps/new), following these [instructions](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873)
     * To configure the application to avoid webbrowser redirection for verification,  on the dev.fitbit page, go to MANAGE MY APPS > OAuth2.0 tutorial page. Under Flow Type, select Authorization Code Flow and fill in the form fields below. Store the Access Token and Refresh Token.
@@ -57,7 +57,6 @@ Project licensed under the MIT License
  * Sample Dummy Credentials storage file
  * Unchecked stuff in features
  * Video walkthrough of commands/animation
- * Truncate distance values from fitbit data
  * [ ] Garmin API
  * [ ] Create a speadsheet class to contain lookup dictionaries of all editable regions and include functions to add or set a region of the spreadsheet to access.
  * [ ] Create setup function to prompt user for credentials and accordingly store them.
