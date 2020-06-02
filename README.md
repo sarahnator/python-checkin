@@ -10,6 +10,7 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  * [X] User can see progress of requests through progress bars and outputs to the terminal.
  * [X] Secure MFP credential storage in system keyring.
  * [ ] Enable data retrieval from Garmin API
+ * [ ] NUMPY / PANDAS stuff!
  * [ ] python interpreter for faster execution
  * [ ] Prompt user for / handle storage of credentials for necessary APIs (populate an empty credentials file)
  
