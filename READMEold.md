@@ -82,3 +82,17 @@ $ virtualenv venv
 $ . venv/bin/activate
 $ pip install --editable .
 [src](https://click.palletsprojects.com/en/7.x/setuptools/#testing-the-script)
+
+
+
+## TODO
+ * update this readme
+ * DRY code
+ * Sample Dummy Credentials storage file
+ * Unchecked stuff in features
+ * Video walkthrough of commands/animation
+ * [ ] Garmin API
+ * [ ] Create a speadsheet class to contain lookup dictionaries of all editable regions and include functions to add or set a region of the spreadsheet to access.
+ * [ ] Create setup function to prompt user for credentials and accordingly store them.
+ * [ ] Add pypy python interpreter to speed up execution
+ * [ ] Create PyPi package for GP clients to use this program
