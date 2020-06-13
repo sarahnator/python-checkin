@@ -52,7 +52,7 @@ def query_mfp():
             else:
                 total = {"cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
 
-            weight = str(b)
+            weight = float(b)
             # prints most recent --> least recent
             data_row = {"weight": weight, "date": date}
             data_row.update(total)  # append totals
