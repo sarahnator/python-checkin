@@ -9,6 +9,7 @@ import json
 from scripts.dateUtils import *
 from fitbit import exceptions
 
+
 def query_mfp():
     print("Querying MyFitnessPal...")
 
@@ -71,8 +72,8 @@ def query_mfp():
 
     return mfp_data
 
-def query_fitbit():
 
+def query_fitbit():
     # get credentials from json file
     with open('json/creds.json') as src:
         data = json.load(src)

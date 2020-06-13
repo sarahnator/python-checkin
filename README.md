@@ -41,6 +41,10 @@ Install required python3 modules:
 $ sudo pip install -r requirements.txt
 ```
 
+## Demo
+![](demo/shortDemo.mp4)
+[description](demo/shortDemo.md)
+
 ## Notes
 The spreadsheet described above is based on the features of spreadsheets accessible to clients of Gifted Performance LLC.
 

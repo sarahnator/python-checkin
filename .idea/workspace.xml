@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d60ccbc-a20b-4ee2-8e85-27ce9d8cadf7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/demo/shortDemo.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/shortDemo.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/query.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -176,7 +179,9 @@
       <workItem from="1591066711950" duration="1012000" />
       <workItem from="1591497807322" duration="705000" />
       <workItem from="1591567763039" duration="56000" />
-      <workItem from="1592076541509" duration="305000" />
+      <workItem from="1592076541509" duration="610000" />
+      <workItem from="1592078620321" duration="239000" />
+      <workItem from="1592085784434" duration="920000" />
     </task>
     <servers />
   </component>
@@ -240,6 +245,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="442" y="171" key="RollbackChangesDialog/0.23.1440.877@0.23.1440.877" timestamp="1590347869965" />
+    <state x="421" y="94" width="598" height="735" key="find.popup" timestamp="1592085822132">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="421" y="94" width="598" height="735" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1592085822132" />
     <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1590631559576">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
