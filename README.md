@@ -42,7 +42,7 @@ $ sudo pip install -r requirements.txt
 ```
 
 ## Demo
-![](demo/shortDemo.mp4)
+!video[](demo/shortDemo.mp4)
 [description](demo/shortDemo.md)
 
 ## Notes
