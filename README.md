@@ -42,6 +42,7 @@ $ sudo pip install -r requirements.txt
 ```
 
 ## Demo
+Well that sucks, apparently the demo vid is too big to attach in md. See the demo folder.
 ![](demo/shortDemo.mp4)
 [description](demo/shortDemo.md)
 
