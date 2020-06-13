@@ -53,19 +53,20 @@ def query_mfp():
                 total = {"cal": cal, "pro": pro, "car": car, "fat": fat, "fiber": fiber}
 
             weight = float(b)
+
             # prints most recent --> least recent
             data_row = {"weight": weight, "date": date}
             data_row.update(total)  # append totals
             data_list.insert(0, data_row)  # prepend to front of list of all data
 
     # data list format:
-    # [{'weight': '122.9', 'date': datetime.date(2020, 5, 24), 'calories': 2316, 'protein': 154, 'carbohydrates': 294,
+    # [{'weight': 122.9, 'date': datetime.date(2020, 5, 24), 'calories': 2316, 'protein': 154, 'carbohydrates': 294,
     #   'fat': 65, 'fiber': 62},
-    #  {'weight': '123.0', 'date': datetime.date(2020, 5, 28), 'calories': 2272, 'protein': 153, 'carbohydrates': 291,
+    #  {'weight': 123.0, 'date': datetime.date(2020, 5, 28), 'calories': 2272, 'protein': 153, 'carbohydrates': 291,
     #   'fat': 63, 'fiber': 67}]
 
     mfp_data = [list(col) for col in zip(*[d.values() for d in data_list])]
-    # reformat:   [['122.5', '123.3', '123.2', '123.4'], --> weight    ['05-17', '05-18', '05-19', '05-20'],  --> date   [2321, 2347, 2324, 2316], --> cals
+    # reformat:   [[122.5, 123.3, 123.2, 123.4], --> weight    ['05-17', '05-18', '05-19', '05-20'],  --> date   [2321, 2347, 2324, 2316], --> cals
     #           [298, 301, 298, 295], --> pro   [63, 65, 63, 63], --> fat   [154, 153, 154, 152], --> pro   [62, 62, 63, 67]] --> fiber
 
     return mfp_data
