@@ -18,7 +18,9 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
 Currently this project is not configured for use by the general public. This project is intended for use by members of Gifted Performance, as the program is designed to work specifically with spreadsheets of GP clients. Setup instructions/configuration below are incomplete as of yet.
  
 ## Demo
-* Animated demonstration of program + commands coming soon!
+Well that sucks, apparently the demo vid is too big to attach in md. See the demo folder.
+![](demo/shortDemo.mp4)
+[description](demo/shortDemo.md)
 
 ## Configuration - needs updating
 * Gspread: Create credentials [here](https://gspread.readthedocs.io/en/latest/oauth2.html), follow the setup instructions detailed in [this post](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
@@ -40,11 +42,6 @@ Install required python3 modules:
 ```angular2
 $ sudo pip install -r requirements.txt
 ```
-
-## Demo
-Well that sucks, apparently the demo vid is too big to attach in md. See the demo folder.
-![](demo/shortDemo.mp4)
-[description](demo/shortDemo.md)
 
 ## Notes
 The spreadsheet described above is based on the features of spreadsheets accessible to clients of Gifted Performance LLC.
