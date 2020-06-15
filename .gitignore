@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # from mfp
 /build
 *.pyc
@@ -19,26 +18,18 @@ pip-selfcheck.json
 
 
 
-=======
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
 # Ignore vscode settings
 /.vscode
 
 # old
-<<<<<<< HEAD
 ../READMEold.md
-=======
 READMEold.md
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
 client.json
 creds.json
 
 #
-<<<<<<< HEAD
 json/
-=======
 ../json/
->>>>>>> e0157a949226f00e1860f8988c6c070a4aa26427
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
