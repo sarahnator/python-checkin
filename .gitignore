@@ -14,10 +14,6 @@ share/*
 .tox/*
 pip-selfcheck.json
 
-
-
-
-
 # Ignore vscode settings
 /.vscode
 
@@ -26,6 +22,7 @@ pip-selfcheck.json
 READMEold.md
 client.json
 creds.json
+fixBugs.md
 
 #
 json/
