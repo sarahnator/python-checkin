@@ -109,7 +109,7 @@ class FitbitOauth2Client(object):
             - redirect_uri: url to which the response will posted. required here
               unless you specify only one Callback URL on the fitbit app or
               you already passed it to the constructor
-            for more info see https://dev.fitbit.com/docs/oauth2/
+            for more info see https://dev.fimatbit.com/docs/oauth2/
         """
 
         self.session.scope = scope or [
@@ -223,7 +223,7 @@ class Fitbit(object):
             refresh_token=refresh_token,
             expires_at=expires_at,
             refresh_cb=refresh_cb,
-            # redirect_uri=redirect_uri,
+            redirect_uri=redirect_uri,
             **kwargs
         )
 
