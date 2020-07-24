@@ -1,11 +1,7 @@
 from scripts.spreadsheet import *
 import click
 from scripts.query import *
-
-
 # !/usr/bin/env python
-
-#     click.secho('All entries updated!')
 
 @click.group(chain=True)
 def cli():
