@@ -17,7 +17,7 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  * [ ] Prompting / storage of credentials for necessary APIs (populate an empty credentials file)
  
 ## Note
-This project is intended for use by members of Gifted Performance, as the program is designed to work specifically with spreadsheets of GP clients. Setup instructions/configuration below are in progress.
+This project is intended for use by members of Gifted Performance, as the program is designed to work specifically with spreadsheets of GP clients. Setup instructions below are in progress :)
  
 ## Demo
 Well that sucks, apparently the demo vid is too big to attach in markdown. See the demo folder.
