@@ -1,5 +1,6 @@
 # Python-Checkin : personal project
 A data retrieval automation program that migrates data from the MyFitnessPal and FitBit/Garmin APIs into google spreadsheets for data analysis.
+
 ![ ](demo/screenShot.png)
 
  ## Current/Future Features
