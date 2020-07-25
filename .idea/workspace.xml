@@ -20,9 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d60ccbc-a20b-4ee2-8e85-27ce9d8cadf7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/check.sh" beforeDir="false" afterPath="$PROJECT_DIR$/check.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/checkin.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/checkin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/dateUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/dateUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/spreadsheet.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/spreadsheet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +187,8 @@
       <workItem from="1592400088093" duration="994000" />
       <workItem from="1592401536477" duration="660000" />
       <workItem from="1592402562040" duration="324000" />
-      <workItem from="1595553144911" duration="119000" />
+      <workItem from="1595553144911" duration="626000" />
+      <workItem from="1595697063959" duration="3406000" />
     </task>
     <servers />
   </component>

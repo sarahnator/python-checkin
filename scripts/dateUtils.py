@@ -4,6 +4,10 @@ from dateutil import relativedelta
 
 
 def get_sunday():
+    """
+    Gets the last calendar Sunday.
+    :return sun: datetime object for Sunday.
+    """
     today = datetime.datetime.now()
     start = today - datetime.timedelta((today.weekday() + 1) % 7)
     sun = start + relativedelta.relativedelta(weekday=relativedelta.SU(-1))

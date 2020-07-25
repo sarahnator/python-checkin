@@ -9,8 +9,13 @@ import json
 from scripts.dateUtils import *
 from fitbit import exceptions
 
-
 def query_mfp():
+    """
+    Initiates mfp client and returns all MyFitnessPal macronutient and weight data relative to last calendar Sunday.
+    Outputs progress bars to terminal.
+    :return mfp_data: nested list [[weights], [dates], [calories], [carbohydrates], [fats], [protein], [fiber]]
+    """
+
     print("Querying MyFitnessPal...")
 
     # init connection to mfp api
@@ -68,12 +73,20 @@ def query_mfp():
 
     mfp_data = [list(col) for col in zip(*[d.values() for d in data_list])]
     # reformat:   [[122.5, 123.3, 123.2, 123.4], --> weight    ['05-17', '05-18', '05-19', '05-20'],  --> date   [2321, 2347, 2324, 2316], --> cals
-    #           [298, 301, 298, 295], --> pro   [63, 65, 63, 63], --> fat   [154, 153, 154, 152], --> pro   [62, 62, 63, 67]] --> fiber
+    #           [298, 301, 298, 295], --> carbs   [63, 65, 63, 63], --> fat   [154, 153, 154, 152], --> pro   [62, 62, 63, 67]] --> fiber
 
     return mfp_data
 
 
 def query_fitbit():
+    """
+    Initiates fitbit client and server, returns  fitbit activity data relative to last calendar Sunday.
+    If session token has expired, refreshes token and writes updated credentials to json file "json/creds.json".
+    Outputs progress bars to terminal.
+    :return fitbit_data: nested list [[steps], [distances]]
+    """
+    # TODO: put (re)authentication into separate function
+
     # get credentials from json file
     with open('json/creds.json') as src:
         data = json.load(src)

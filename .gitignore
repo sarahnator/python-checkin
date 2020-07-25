@@ -22,7 +22,9 @@ pip-selfcheck.json
 READMEold.md
 client.json
 creds.json
-fixBugs.md
+bugFix.md
+notes.md
+
 
 #
 json/
