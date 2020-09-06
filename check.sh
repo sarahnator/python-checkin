@@ -1,6 +1,6 @@
 echo "Hello there! Sit tight..."
 
-cd /Users/cookiemonster/PycharmProjects/python-checkin > /dev/null
+cd /Users/cookiemonster/PycharmProjects/python-checkin > /dev/null || return
 
 virtualenv venv > /dev/null
 . venv/bin/activate > /dev/null
