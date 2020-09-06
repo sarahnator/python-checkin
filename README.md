@@ -11,11 +11,11 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  * [X] A [command-line interface](https://click.palletsprojects.com/en/7.x/) that allows the user to conveniently chain multiple commands for ease of use and access help page for any commands.
  * [X] User can see progress of requests through progress bars and outputs to the terminal.
  * [X] Secure MFP credential storage in system keyring.
- * [ ] Enable data retrieval from Garmin API
- * [ ] NUMPY and PANDAS!
- * [ ] python interpreter for faster execution
+ * [1/2] Export data to CSV files for possible use in regression models
+ * [1/2] numpy/pandas stuff
  * [ ] Prompting / storage of credentials for necessary APIs (populate an empty credentials file)
- 
+ * [ ] Enable data retrieval from Garmin API
+
 ## Note
 This project is intended for use by members of Gifted Performance, as the program is designed to work specifically with spreadsheets of GP clients. Setup instructions below are in progress :)
  
