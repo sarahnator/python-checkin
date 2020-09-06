@@ -9,28 +9,21 @@ import json
 from scripts.dateUtils import *
 from fitbit import exceptions
 
+
 # !/usr/bin/env python
 
-if __name__ == "__main__":
+def mfp_data_from_date(date):
+    """
+        Non-verbose function to retrieve all myfitnesspal data from date to now.
+        :param date:  datetime object of desired date, ex: datetime.date(2015, 5, 11)
+        :return mfp_data: nested list [[weights], [dates], [calories], [carbohydrates], [fats], [protein], [fiber]]
 
     """
-    Initiates mfp client and returns all MyFitnessPal macronutient and weight data relative to last calendar Sunday.
-    Outputs progress bars to terminal.
-    :return mfp_data: nested list [[weights], [dates], [calories], [carbohydrates], [fats], [protein], [fiber]]
-    """
-
-    print("Querying MyFitnessPal...")
-
     # init connection to mfp api
     with open('json/creds.json') as src:
         data = json.load(src)
     client = pal.Client(data['email'])
-
-    # query weights
-    last_sunday = get_sunday()
-    y, m, d = last_sunday.year, last_sunday.month, last_sunday.day
-    day = datetime.date(y, m, d)
-    weights = client.get_measurements('Weight', day)
+    weights = client.get_measurements('Weight', date)
     weights = list(weights.items())  # convert ordered dictionary to list
 
     data_list = []  # container for data row
@@ -72,12 +65,15 @@ if __name__ == "__main__":
     # fmt:   [[122.5, 123.3, 123.2, 123.4], --> weight    ['05-17', '05-18', '05-19', '05-20'],  --> date   [2321, 2347, 2324, 2316], --> cals
     #           [298, 301, 298, 295], --> carbs   [63, 65, 63, 63], --> fat   [154, 153, 154, 152], --> pro   [62, 62, 63, 67]] --> fiber
 
+    return mfp_data
 
+
+def fitbit_data_from_date (date):
     """
-    Initiates fitbit client and server, returns  fitbit activity data relative to last calendar Sunday.
-    If session token has expired, refreshes token and writes updated credentials to json file "json/creds.json".
-    Outputs progress bars to terminal.
-    :return fitbit_data: nested list [[steps], [distances]]
+        Initiates fitbit client and server, returns  fitbit activity data relative to last calendar Sunday.
+        If session token has expired, refreshes token and writes updated credentials to json file "json/creds.json".
+        Outputs progress bars to terminal.
+        :return fitbit_data: nested list [[steps], [distances]]
     """
     # TODO: put (re)authentication into separate function
 
@@ -96,7 +92,7 @@ if __name__ == "__main__":
 
     # get end and base date for api call
     today = str(datetime.datetime.now().strftime("%Y-%m-%d"))
-    sunday = str(get_sunday().strftime("%Y-%m-%d"))
+    sunday = str(date.strftime("%Y-%m-%d"))
 
     # catch 401 error / refresh the token if token has expired (pops up browser window)
     try:
@@ -149,21 +145,30 @@ if __name__ == "__main__":
 
     # print(fitbit_data)
 
-    # create numpy arr for weights as ground truth
+    return fitbit_data
+
+
+if __name__ == "__main__":
+    mfp_data = mfp_data_from_date
+    fitbit_data = fitbit_data_from_date
+
+    # create numpy array for weights as ground truth
     y = mfp_data[0]
     y_data = np.array(y)
 
     # create X inputs
     c = np.array(mfp_data[2])
-    c = np.reshape(c, (len(mfp_data[2]), 1))
     s = np.array(fitbit_data[0])
+    # transpose 1D matrices
+    c = np.reshape(c, (len(mfp_data[2]), 1))
     s = np.reshape(s, (len(fitbit_data[0]), 1))
+    # horizontally stack 1D matrices
     X_data = np.hstack((c, s))
 
     # print(y_data)
     print(X_data)
 
-    #TODO: save to file function with parameter for appending or overwriting file
+    # TODO: save to file function with parameter for appending or overwriting file
     fX = open("./exportedData/X_data.csv", "w")
     fy = open("./exportedData/y_data.csv", "w")
     # TODO - reformatting data
