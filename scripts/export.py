@@ -1,5 +1,6 @@
 # note -- run in virtualenv w/ command: python scripts/export.py
 import numpy as np
+import pandas as pd
 import myfitnesspal as pal
 from scripts.spreadsheet import *
 import fitbit as bit
@@ -10,13 +11,11 @@ from scripts.dateUtils import *
 from fitbit import exceptions
 
 
-# !/usr/bin/env python
-
 def mfp_data_from_date(date):
     """
-        Non-verbose function to retrieve all myfitnesspal data from date to now.
-        :param date:  datetime object of desired date, ex: datetime.date(2015, 5, 11)
-        :return mfp_data: nested list [[weights], [dates], [calories], [carbohydrates], [fats], [protein], [fiber]]
+    Non-verbose function to retrieve all myfitnesspal data from date to now.
+    :param date:  datetime object of desired date, ex: datetime.date(2015, 5, 11)
+    :return mfp_data: nested list [[weights], [dates], [calories], [carbohydrates], [fats], [protein], [fiber]]
 
     """
     # init connection to mfp api
@@ -68,12 +67,14 @@ def mfp_data_from_date(date):
     return mfp_data
 
 
-def fitbit_data_from_date (date):
+def fitbit_data_from_date(date):
     """
-        Initiates fitbit client and server, returns  fitbit activity data relative to last calendar Sunday.
-        If session token has expired, refreshes token and writes updated credentials to json file "json/creds.json".
-        Outputs progress bars to terminal.
-        :return fitbit_data: nested list [[steps], [distances]]
+    Non verbose version.
+    Initiates fitbit client and server, returns  fitbit activity data relative to last calendar Sunday.
+    If session token has expired, refreshes token and writes updated credentials to json file "json/creds.json".
+    Outputs progress bars to terminal.
+    :param date:  datetime object of desired date, ex: datetime.date(2015, 5, 11)
+    :return fitbit_data: nested list [[steps], [distances]]
     """
     # TODO: put (re)authentication into separate function
 
@@ -148,10 +149,14 @@ def fitbit_data_from_date (date):
     return fitbit_data
 
 
-if __name__ == "__main__":
-    mfp_data = mfp_data_from_date
-    fitbit_data = fitbit_data_from_date
-
+def export_subset(mfp_data, fitbit_data):
+    """
+    Exports weights as y array, calories and steps as multidimensional X matrix
+    Saves y to y_data.csv, X to X_data.csv in exportedData directory.
+    Inconveniently uses numpy arrays instead of panda dataframes because I was lazy.
+    :param mfp_data: nested array of myfitnesspal data
+    :param fitbit_data: nested array of fitbit data
+    """
     # create numpy array for weights as ground truth
     y = mfp_data[0]
     y_data = np.array(y)
@@ -166,11 +171,32 @@ if __name__ == "__main__":
     X_data = np.hstack((c, s))
 
     # print(y_data)
-    print(X_data)
+    print(X_data)  # for debug - if data is 0 anywhere, requery, error on fitbit/mfp
 
     # TODO: save to file function with parameter for appending or overwriting file
     fX = open("./exportedData/X_data.csv", "w")
     fy = open("./exportedData/y_data.csv", "w")
-    # TODO - reformatting data
     np.savetxt(fX, X_data, fmt='%6d', delimiter=',')
     np.savetxt(fy, y_data, fmt='%3.1f', delimiter=',')
+
+
+def export_all(mfp_data, fitbit_data):
+    """
+    Combines myfitnesspal and fitbit data into one dataframe, which is then written to a csv file
+    :param mfp_data: nested array of myfitnesspal data
+    :param fitbit_data: nested array of fitbit data
+    """
+    mfp_df = pd.DataFrame(mfp_data).transpose()
+    fitbit_df = pd.DataFrame(fitbit_data).transpose()
+    all = pd.concat([mfp_df, fitbit_df], axis=1)
+    print(all)
+    fAll = open("./exportedData/all.csv", "w")
+    all.to_csv(fAll, index=False, index_label=False)
+
+if __name__ == "__main__":
+    d1 = datetime.date(2020, 1, 28)  # since working with coach
+    d2 = datetime.date(2020, 5, 25)  # date started fitbit tracking
+
+    mfp_data = mfp_data_from_date(d2)
+    fitbit_data = fitbit_data_from_date(d2)
+    export_all(mfp_data, fitbit_data)

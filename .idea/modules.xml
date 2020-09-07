@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../fitness-data-mod/.idea/fitness-data-mod.iml" filepath="$PROJECT_DIR$/../fitness-data-mod/.idea/fitness-data-mod.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../untitled1/.idea/fitness-regression-mod.iml" filepath="$PROJECT_DIR$/../untitled1/.idea/fitness-regression-mod.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/py-checkintemp.iml" filepath="$PROJECT_DIR$/.idea/py-checkintemp.iml" />
     </modules>
   </component>
