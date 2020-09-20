@@ -5,8 +5,8 @@ from scripts.query import *
 
 @click.group(chain=True)
 def cli():
-    click.echo('Hello! Making changes to your spreadsheet...')
-
+    # click.echo('Hello! Making changes to your spreadsheet...')
+    pass
 
 @cli.command('note', short_help='add note')
 def note():
@@ -50,25 +50,27 @@ def clear(tracker, activity, notes):
     if not tracker and not activity and not notes:
         clear_all()
 
-
+@click.option('--delta', '-d', type=int, default=0,
+            help='''This option enables you to specify the end date for api call for data to put in the weekly weight/nutrition tracker''')
 @click.option('--tracker', '-t', is_flag=True,
               help='''This script enables you to make changes to the weekly weight/nutrition tracker''')
 @click.option('--activity', '-a', is_flag=True,
               help='''This script enables you to make changes to the weekly activity tracker''')
 @cli.command('update', short_help='get le data')
-def update(tracker, activity):
+def update(tracker, activity, delta):
     """
     \b
     Updates entries with latest API data.
     Updates both the weight/nutrition tracker and activity tracker, unless given an option parameter.
     """
+    # print(delta)
     if tracker:
-        populate_tracker(query_mfp())
+        populate_tracker(query_mfp(delta), delta)
     if activity:
-        populate_activity(query_fitbit())
+        populate_activity(query_fitbit(delta))
     if not tracker and not activity:
-        populate_tracker(query_mfp())
-        populate_activity(query_fitbit())
+        populate_tracker(query_mfp(delta), delta)
+        populate_activity(query_fitbit(delta))
 
 
 if __name__ == "__main__":

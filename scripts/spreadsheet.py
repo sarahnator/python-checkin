@@ -2,7 +2,7 @@ import click
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import json
-from scripts.dateUtils import get_sunday
+from scripts.dateUtils import get_sunday, get_base_sunday
 
 # lookup table for fields in spreadsheet
 note_rng_dict = {"Mon": 'B20:B21', "Tue": 'B22:G23', "Wed": 'B24:G25', "Thu": 'B26:G27', "Fri": 'B28:G29',
@@ -73,16 +73,17 @@ def clear_tracker():
     populate_tracker(None)
 
 
-def populate_tracker(val_list):
+def populate_tracker(val_list, delta):
     """
     Populates the weight / nutrition tracker.
     Outputs progress bar to terminal.
     :param val_list:  potentially null list of values to populate weight / nutrition tracker. If val_list is null, clears tracker.
     Else, populates weight / nutrition tracker with MyFitnessPal data.
+    :param delta: base date for api calls to MFP/fitbit
     """
 
     # update date col
-    update_date()
+    update_date(delta)
     # get list of ranges from dictionary
     range_list = list(weight_nutrition_rng_dict.values())
 
@@ -106,11 +107,13 @@ def populate_tracker(val_list):
             bar.update(i)
 
 
-def update_date():
+def update_date(delta):
     """
-    Updates the Sunday date entry in the spreadsheet to the last calendar Sunday.
+    Updates the Sunday date entry in the spreadsheet.
+    :param delta: number of days to offset by
     """
-    sunday = get_sunday()
+    # sunday = get_sunday()
+    sunday = get_base_sunday(delta)
     sunday = '{:%m/%d/%y}'.format(sunday)
     sheet.update_acell('C40', sunday)
 

@@ -193,6 +193,7 @@ def export_all(mfp_data, fitbit_data):
     fAll = open("./exportedData/all.csv", "w")
     all.to_csv(fAll, index=False, index_label=False)
 
+
 if __name__ == "__main__":
     d1 = datetime.date(2020, 1, 28)  # since working with coach
     d2 = datetime.date(2020, 5, 25)  # date started fitbit tracking

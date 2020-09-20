@@ -9,10 +9,11 @@ import json
 from scripts.dateUtils import *
 from fitbit import exceptions
 
-def query_mfp():
+def query_mfp(delta=0):
     """
     Initiates mfp client and returns all MyFitnessPal macronutient and weight data relative to last calendar Sunday.
     Outputs progress bars to terminal.
+    :param delta: number of days to offset api call from getting data relative to most recent sunday
     :return mfp_data: nested list [[weights], [dates], [calories], [carbohydrates], [fats], [protein], [fiber]]
     """
 
@@ -25,7 +26,8 @@ def query_mfp():
 
     with click.progressbar(length=4, label='Fetching weight trends') as bar:
         # query weights
-        last_sunday = get_sunday()
+        # last_sunday = get_sunday()
+        last_sunday = get_base_sunday(delta)
         bar.update(1)
         y, m, d = last_sunday.year, last_sunday.month, last_sunday.day
         day = datetime.date(y, m, d)
@@ -78,11 +80,12 @@ def query_mfp():
     return mfp_data
 
 
-def query_fitbit():
+def query_fitbit(delta=0):
     """
     Initiates fitbit client and server, returns  fitbit activity data relative to last calendar Sunday.
     If session token has expired, refreshes token and writes updated credentials to json file "json/creds.json".
     Outputs progress bars to terminal.
+    :param delta: number of days to offset api call from getting data relative to most recent sunday
     :return fitbit_data: nested list [[steps], [distances]]
     """
     # TODO: put (re)authentication into separate function
@@ -102,7 +105,8 @@ def query_fitbit():
 
     # get end and base date for api call
     today = str(datetime.datetime.now().strftime("%Y-%m-%d"))
-    sunday = str(get_sunday().strftime("%Y-%m-%d"))
+    # sunday = str(get_sunday().strftime("%Y-%m-%d"))
+    sunday = str(get_base_sunday(delta).strftime("%Y-%m-%d"))
 
     # catch 401 error / refresh the token if token has expired (pops up browser window)
     try:
