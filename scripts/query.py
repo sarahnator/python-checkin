@@ -9,6 +9,7 @@ import json
 from scripts.dateUtils import *
 from fitbit import exceptions
 
+
 def query_mfp(delta=0):
     """
     Initiates mfp client and returns all MyFitnessPal macronutient and weight data relative to last calendar Sunday.
