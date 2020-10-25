@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9d60ccbc-a20b-4ee2-8e85-27ce9d8cadf7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/dateUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/dateUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/query.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="2f2efb23-932c-4ece-8d0b-6f7895139367" />
   <component name="ProjectId" id="1cMo6FpcOCW8xZueHwS9N8D6Njv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -226,7 +225,9 @@
       <workItem from="1599508034873" duration="12808000" />
       <workItem from="1599614447970" duration="668000" />
       <workItem from="1600614222103" duration="5427000" />
-      <workItem from="1601216694185" duration="258000" />
+      <workItem from="1601216694185" duration="318000" />
+      <workItem from="1601824700956" duration="224000" />
+      <workItem from="1602426618870" duration="1218000" />
     </task>
     <servers />
   </component>
