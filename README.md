@@ -11,8 +11,7 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  * [X] A [command-line interface](https://click.palletsprojects.com/en/7.x/) that allows the user to conveniently chain multiple commands for ease of use and access help page for any commands.
  * [X] User can see progress of requests through progress bars and outputs to the terminal.
  * [X] Secure MFP credential storage in system keyring.
- * [1/2] Export data to CSV files for possible use in regression models
- * [1/2] numpy/pandas stuff
+ * [X] Export data to CSV files
  * [ ] Prompting / storage of credentials for necessary APIs (populate an empty credentials file)
  * [ ] Enable data retrieval from Garmin API
 
