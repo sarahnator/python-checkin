@@ -1,4 +1,4 @@
-# Python-Checkin : personal project
+# Python-Checkin: Data analysis for the ~~lazy~~ energy-conscious athlete! (personal project)
 A data retrieval automation program that migrates data from the MyFitnessPal and FitBit/Garmin APIs into google spreadsheets for data analysis.
 
 ![ ](demo/screenShot.png)
@@ -7,7 +7,7 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
  * [X] Enables data retrieval from MyFitnessPal 
  * [X] Enables data retrieval from FitBit
  * [X] Enables user to remotely edit a spreadsheet (see Notes section)
- * [X] Editing allows a user to add notes to the Athlete Notes table, populate the Activity Tracker and Nutrition and Weight Tracker fields with the latest MFP/FitBit data, or clear any of all the editable regions mentioned.
+ * [X] Editing allows a user to add notes to the Athlete Notes table, populate the Activity Tracker and Nutrition and Weight Tracker fields with the latest MFP/FitBit data, retrieve other parameterized fitness data, or clear any of all the editable regions mentioned.
  * [X] A [command-line interface](https://click.palletsprojects.com/en/7.x/) that allows the user to conveniently chain multiple commands for ease of use and access help page for any commands.
  * [X] User can see progress of requests through progress bars and outputs to the terminal.
  * [X] Secure MFP credential storage in system keyring.
@@ -19,7 +19,7 @@ A data retrieval automation program that migrates data from the MyFitnessPal and
 This project is intended for use by members of Gifted Performance, as the program is designed to work specifically with spreadsheets of GP clients. Setup instructions below are in progress :)
  
 ## Demo
-Well that sucks, apparently the demo vid is too big to attach in markdown. See the demo folder.
+Well that sucks, apparently the demo video is too big to attach in markdown. See the demo folder.
 ![](demo/shortDemo.mp4)
 [description](demo/shortDemo.md)
 
